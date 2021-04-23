@@ -16,8 +16,10 @@ public class BasketDetector : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Selam");
         if (TheScript.actualDoorStatus == false)    //Baþlangýçta kapý kapalýysa ve OnTriggerdan dolayý basket olduðunu anlýyor, basket olduysa giriyor.
         {
+            Debug.Log("Girdi");
             //Kapýnýn açýlýp kapanmasýna dair iki farklý transition condition var. Bunlar OpenOrClose=True ya da false. Stop ise baþlangýçtaki boþ stateten diðer 
             //statelere gidip animasyon çalýþarak baþlamasýn diye. Bir kez basket olduktan sonra artýk stop tekrar 0 olamýyor. NotEquals bir kez olsun saðlanýyor 
             //ve artýk stopun önemi kalmýyor.
@@ -26,11 +28,12 @@ public class BasketDetector : MonoBehaviour
             TheScript.actualDoorStatus = true;
             TheScript.LeftDoor.SetInteger("Stop", 1);
             TheScript.RightDoor.SetInteger("Stop", 1);
+            
         }
 
         else if(TheScript.actualDoorStatus == true) //Baþlangýçta kapý açýksa. 
         {
-            
+            Debug.Log("Tekrar girdi");
             TheScript.LeftDoor.SetBool("OpenOrClose", false);
             TheScript.RightDoor.SetBool("OpenOrClose", false);
             TheScript.actualDoorStatus = false;
@@ -40,5 +43,5 @@ public class BasketDetector : MonoBehaviour
 
 
 
-        }
+     }
 }
