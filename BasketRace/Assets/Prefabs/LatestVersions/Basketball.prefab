@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6690734542306886738}
   - component: {fileID: 8880734354669809816}
   - component: {fileID: 2735959149154236954}
-  - component: {fileID: 2850985312317105144}
   - component: {fileID: 5509808290159398896}
+  - component: {fileID: 1302779995684654654}
   m_Layer: 0
   m_Name: OriginalBasketBall
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6935060361986707789}
   m_LocalRotation: {x: 0.75173575, y: -0.58974224, z: -0.25849792, w: 0.14239529}
   m_LocalPosition: {x: 1.56, y: 3.087, z: -2.38}
-  m_LocalScale: {x: 11.68174, y: 11.68174, z: 11.68174}
+  m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -101,20 +101,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &2850985312317105144
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6935060361986707789}
-  m_Material: {fileID: 13400000, guid: 7847f1f561037cc46a0cbefc519561a0, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4711208715938537054, guid: ad0b28c73cfbce44088e3b73b3528efd, type: 3}
 --- !u!114 &5509808290159398896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,3 +113,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8d873556aa6b148855c5552cb6ef03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &1302779995684654654
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935060361986707789}
+  m_Material: {fileID: 13400000, guid: 7847f1f561037cc46a0cbefc519561a0, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009793551
+  m_Center: {x: -0.0000000013969844, y: -0.0000000023283078, z: 1.9428903e-16}
