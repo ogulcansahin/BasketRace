@@ -10,7 +10,7 @@ public class BasketDetector : MonoBehaviour
     GameObject doorcontrol;
     private void Start()
     {
-        doorcontrol = GameObject.FindGameObjectWithTag("doordetector");
+        doorcontrol = GameObject.FindGameObjectWithTag("doordetector"); //Ana kapýdaki Tag.
         TheScript = doorcontrol.GetComponent<startdooranim>();
         
     }
@@ -23,7 +23,7 @@ public class BasketDetector : MonoBehaviour
             //Kapýnýn açýlýp kapanmasýna dair iki farklý transition condition var. Bunlar OpenOrClose=True ya da false. Stop ise baþlangýçtaki boþ stateten diðer 
             //statelere gidip animasyon çalýþarak baþlamasýn diye. Bir kez basket olduktan sonra artýk stop tekrar 0 olamýyor. NotEquals bir kez olsun saðlanýyor 
             //ve artýk stopun önemi kalmýyor.
-            TheScript.LeftDoor.SetBool("OpenOrClose", true);
+            TheScript.LeftDoor.SetBool("OpenOrClose", true); //True ise açsýn False ise kapasýn.
             TheScript.RightDoor.SetBool("OpenOrClose", true);
             TheScript.actualDoorStatus = true;
             TheScript.LeftDoor.SetInteger("Stop", 1);

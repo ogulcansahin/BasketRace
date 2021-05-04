@@ -6,6 +6,7 @@ TagManager:
   tags:
   - basketdetector
   - doordetector
+  - MainPlayer
   layers:
   - Default
   - TransparentFX
