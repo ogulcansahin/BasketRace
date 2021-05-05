@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: free_male_1_body
+  m_Name: EnemyMaterial
   m_Shader: {fileID: 4800000, guid: 367dbb9e07d16df4cbcb65ed35561be3, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 5
@@ -44,7 +44,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _ColorMultiply: {r: 1, g: 1, b: 1, a: 1}
     - _ColorOverride: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
