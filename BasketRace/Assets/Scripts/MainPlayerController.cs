@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainPlayerController : MonoBehaviour
 {
     GameObject mainPlayer;
-
+    bool IsRunning = true;
     void Start()
     {
         mainPlayer = GameObject.FindWithTag("MainPlayer");
@@ -15,12 +15,19 @@ public class MainPlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if (IsRunning)
+        {
+            run();
+        }
         
-        run();
+        else if (!IsRunning)
+        {
+
+        }
 
     }
     private void run()
         {
-            transform.Translate(transform.forward * Time.deltaTime * 1.2f);
+            transform.Translate(transform.forward * Time.deltaTime * 0.8f);
         }
 }
