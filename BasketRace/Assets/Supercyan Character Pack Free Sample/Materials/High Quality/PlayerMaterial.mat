@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerMaterial
+  m_Name: free_male_1_body
   m_Shader: {fileID: 4800000, guid: 367dbb9e07d16df4cbcb65ed35561be3, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 5
