@@ -11,6 +11,6 @@ public class BallForce : MonoBehaviour
     {
         Time.timeScale = 1f;
         a = GetComponent<Rigidbody>();
-        a.AddForce(new Vector3(-20f, 18f, 10f) * 80);
+        a.AddForce(new Vector3(0f, 8f, 15f) * 80);
     }
 }

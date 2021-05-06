@@ -52,6 +52,7 @@ public class Shoot : MonoBehaviour
         //Top istenilen yonde ve kuvvette firlatilir
         basketballRb.AddForce(dragDir * dragingMag * 10);
         basketballRb.AddTorque(dragDir * 10);
+        Debug.Log("top attýk");
       
     }
     private void OnMouseDown()
