@@ -7,7 +7,6 @@ TagManager:
   - basketdetector
   - doordetector
   - MainPlayer
-  - MainFloor
   layers:
   - Default
   - TransparentFX

@@ -21,6 +21,6 @@ public class CameraFollowPlayer : MonoBehaviour
     void LateUpdate()
     {
         Vector3 newpos = player.position + cameraOffset;
-        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x,newpos.y,newpos.z), SmoothFactor);
+        transform.position = Vector3.Lerp(transform.position, newpos, SmoothFactor);
     }
 }
