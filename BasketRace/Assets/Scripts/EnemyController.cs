@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPlayerController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
-    GameObject mainPlayer;
+    GameObject enemyPlayer;
     GameObject road;
     float road_x;
     bool IsRunning = true;
@@ -12,13 +12,13 @@ public class MainPlayerController : MonoBehaviour
 
     void Start()
     {
-        mainPlayer = GameObject.FindWithTag("MainPlayer");
-        road = GameObject.FindWithTag("MainPlayerFloor");
-        road_x = (road.transform.position - (road.transform.localScale * 0.215f)).x;
+        enemyPlayer = GameObject.FindWithTag("EnemyPlayer");
+        road = GameObject.FindWithTag("EnemyFloor");
+        road_x = (road.transform.position - (road.transform.localScale * 0.235f)).x;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             ChangeLine();
         }
@@ -30,7 +30,7 @@ public class MainPlayerController : MonoBehaviour
         {
             run();
         }
-        
+
         else if (!IsRunning)
         {
 
@@ -38,9 +38,9 @@ public class MainPlayerController : MonoBehaviour
 
     }
     private void run()
-        {
-            transform.Translate(transform.forward * Time.deltaTime * 0.8f);
-        }
+    {
+        transform.Translate(transform.forward * Time.deltaTime * 0.8f);
+    }
 
     private void ChangeLine()
     {
@@ -56,21 +56,21 @@ public class MainPlayerController : MonoBehaviour
             {
                 transform.Translate(transform.right * -1 * Time.deltaTime * 2.9f);
                 yield return new WaitForSeconds(0.005f);
-            }           
-            road_x = (road.transform.position + (road.transform.localScale * 0.225f)).x;
-            isRight = false;     
+            }
+            road_x = (road.transform.position + (road.transform.localScale * 0.235f)).x;
+            isRight = false;
         }
-      
+
         else if (!isRight)
         {
             while (transform.position.x < road_x)
             {
                 transform.Translate(transform.right * Time.deltaTime * 2.9f);
                 yield return new WaitForSeconds(0.005f);
-            }            
-            road_x = (road.transform.position - (road.transform.localScale * 0.215f)).x;
+            }
+            road_x = (road.transform.position - (road.transform.localScale * 0.235f)).x;
             isRight = true;
         }
-     
+
     }
 }

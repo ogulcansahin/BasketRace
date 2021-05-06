@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1348015932593846431}
   - component: {fileID: 1348015932593846428}
   m_Layer: 0
-  m_Name: MainFloor
-  m_TagString: MainPlayerFloor
+  m_Name: EnemyFloor
+  m_TagString: EnemyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
