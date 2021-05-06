@@ -63,7 +63,7 @@ public class MainPlayerController : MonoBehaviour
       
         else if (!isRight)
         {
-            while (transform.position.x < road_x)
+            while (transform.position.x < road_x) 
             {
                 transform.Translate(transform.right * Time.deltaTime * 2.9f);
                 yield return new WaitForSeconds(0.005f);
