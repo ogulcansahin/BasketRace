@@ -9,8 +9,8 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private Vector3 cameraOffset;
 
-    [Range(0.01f, 1.0f)]
-    public float SmoothFactor = 0.5f;
+    
+    private float SmoothFactor = 0.5f;
     void Start()
     {
         cameraOffset = transform.position - player.position;
@@ -21,6 +21,6 @@ public class CameraFollowPlayer : MonoBehaviour
     void LateUpdate()
     {
         Vector3 newpos = player.position + cameraOffset;
-        transform.position = Vector3.Lerp(transform.position, newpos, SmoothFactor);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, newpos.y,newpos.z), SmoothFactor);
     }
 }

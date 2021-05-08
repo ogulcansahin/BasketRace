@@ -13,6 +13,8 @@ public class Shoot : MonoBehaviour
     private float dragZ;
     private Vector3 ballSpawnPos;
     private Vector3 aimLine;
+    private float speed = 5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,7 @@ public class Shoot : MonoBehaviour
         aimLine = firstPressLocation - lastPressLocation;
 
         //Spawnlacak topun tam olarak nerden spawnlanacagini belirlemek icin
-        ballSpawnPos = transform.position + new Vector3(0, 0.3f, 0.25f);
+        ballSpawnPos = transform.position + new Vector3(0, 0.3f, 0.025f);
 
         //Topu spawnladik
         basketballPrefab = Instantiate(basketballPrefab, ballSpawnPos, transform.rotation);
@@ -45,13 +47,13 @@ public class Shoot : MonoBehaviour
         Vector3 dragDir = aimLine.normalized;
 
         //Ekran 2 boyutlu nesne oldugu icin y eksenine uygulanan kuvvettin belirli bi oranini z'ye de atadim
-        dragZ = dragDir[1];
         dragDir[1] = dragDir[1] * 2;
+        dragZ = dragDir[1];
         dragDir[2] = dragZ;
 
         //Top istenilen yonde ve kuvvette firlatilir
-        basketballRb.AddForce(dragDir * dragingMag * 10);
-        basketballRb.AddTorque(dragDir * 10);
+        basketballRb.AddForce(dragDir * dragingMag * speed);
+        basketballRb.AddTorque(dragDir * speed);
         Debug.Log("top attýk");
       
     }
