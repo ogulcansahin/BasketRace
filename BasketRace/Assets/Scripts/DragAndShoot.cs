@@ -10,10 +10,13 @@ public class DragAndShoot : MonoBehaviour
 
     private Rigidbody rb;
     private bool isShoot=false;
+    
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        
 
     }
     
@@ -30,6 +33,7 @@ public class DragAndShoot : MonoBehaviour
 
         if (!isShoot)
             DrawTrajectory.Instance.UpdateTrajectory(forceV, rb, transform.position);
+
     }
 
     private void OnMouseUp() //fareyi býraktýðýnda
