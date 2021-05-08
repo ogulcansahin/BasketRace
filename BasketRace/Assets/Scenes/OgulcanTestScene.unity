@@ -212,19 +212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basketballPrefab: {fileID: 6935060361986707789, guid: 50a4df0ea99df8346bbe829390a93338,
     type: 3}
---- !u!65 &27879220
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27879216}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.19536793, y: 0.24702728, z: 0.14017868}
-  m_Center: {x: -0.0018083453, y: 0.20131344, z: 0.00564003}
 --- !u!1001 &233852614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -508,6 +495,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 795080201, guid: 84fc1ecfd699a4e44b5fd8a7506d386c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7556586652501499701, guid: 84fc1ecfd699a4e44b5fd8a7506d386c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -576,9 +567,10 @@ PrefabInstance:
     - target: {fileID: 7556586652588862634, guid: 84fc1ecfd699a4e44b5fd8a7506d386c,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 795080201, guid: 84fc1ecfd699a4e44b5fd8a7506d386c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 84fc1ecfd699a4e44b5fd8a7506d386c, type: 3}
 --- !u!1 &745438872
 GameObject:
