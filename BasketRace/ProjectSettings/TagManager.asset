@@ -10,6 +10,9 @@ TagManager:
   - MainPlayerFloor
   - EnemyFloor
   - EnemyPlayer
+  - Basketball
+  - Box
+  - GameManager
   layers:
   - Default
   - TransparentFX
