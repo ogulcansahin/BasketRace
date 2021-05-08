@@ -6,12 +6,15 @@ public class MainPlayerController : MonoBehaviour
 {
     GameObject mainPlayer;
     GameObject road;
+    private GameManager gameManager;
     float road_x;
     bool IsRunning = true;
     bool isRight = true;
+    
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         mainPlayer = GameObject.FindWithTag("MainPlayer");
         road = GameObject.FindWithTag("MainPlayerFloor");
         road_x = (road.transform.position - (road.transform.localScale * 0.215f)).x;
@@ -63,7 +66,7 @@ public class MainPlayerController : MonoBehaviour
       
         else if (!isRight)
         {
-            while (transform.position.x < road_x)
+            while (transform.position.x < road_x) 
             {
                 transform.Translate(transform.right * Time.deltaTime * 2.9f);
                 yield return new WaitForSeconds(0.005f);
@@ -72,5 +75,19 @@ public class MainPlayerController : MonoBehaviour
             isRight = true;
         }
      
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Basketball")
+        {
+            gameManager.updateBallCount(1);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Box")
+        {
+            int random = Random.Range(-2,3);
+            gameManager.updateBallCount(random);
+            Destroy(collision.gameObject);
+        }
     }
 }
