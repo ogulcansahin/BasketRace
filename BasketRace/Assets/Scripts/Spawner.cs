@@ -5,9 +5,9 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     private Vector3 SpawnPos;
-    //public Transform SpawnPlaceholder;
     public GameObject spawnObject;
     private float newSpawnDuration = 1.0f;
+    
 
     #region Singleton
 
@@ -25,8 +25,9 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
+
         SpawnPos = transform.position;
-        
+
     }
 
     void SpawnNewObject ()
@@ -41,8 +42,5 @@ public class Spawner : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
