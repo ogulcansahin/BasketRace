@@ -7,14 +7,14 @@ public class DragAndShoot : MonoBehaviour
     private Vector3 mousePressDownPos;
     private Vector3 mouseReleasePos;
     private Vector3 atisegimi;
-
+    private GameManager gameManager;
     private Rigidbody rb;
     private bool isShoot=false;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     
     private void OnMouseDown()
@@ -61,7 +61,7 @@ public class DragAndShoot : MonoBehaviour
         rb.AddForce(new Vector3 (Force.x, (Force.y*1.05f), (Force.y*0.6f)) * forceMultiplier);
         isShoot = true;
         Spawner.Instance.NewSpawnRequest();
-
+        gameManager.updateBallCount(-1);
     }
     
 }

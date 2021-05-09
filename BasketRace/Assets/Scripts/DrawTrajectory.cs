@@ -30,7 +30,8 @@ public class DrawTrajectory : MonoBehaviour
 
     #endregion
 
-    
+
+
 
     public void UpdateTrajectory (Vector3 forceVector, Rigidbody rigidBody, Vector3 startingPoint)
     {
@@ -62,9 +63,12 @@ public class DrawTrajectory : MonoBehaviour
             // Raycast(orjin,gideceði nokta, bir collidera çarparsa onu farkettiriyor, maksimum range)
             if (Physics.Raycast(_linePoints[i - 1], NewPointOnline - _linePoints[i - 1], out hit, (NewPointOnline - _linePoints[i - 1]).magnitude))
             {
+
                 _linePoints.Add(hit.point);
+
                 break;
             }
+
             _linePoints.Add(NewPointOnline);
 
 
@@ -72,6 +76,8 @@ public class DrawTrajectory : MonoBehaviour
 
         _lineRenderer.positionCount = _linePoints.Count;
         _lineRenderer.SetPositions(_linePoints.ToArray());
+
+        
 
     }
 
