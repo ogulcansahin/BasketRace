@@ -14,12 +14,12 @@ public class Shoot : MonoBehaviour
     private Vector3 ballSpawnPos;
     private Vector3 aimLine;
     private float speed = 5f;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -55,7 +55,7 @@ public class Shoot : MonoBehaviour
         basketballRb.AddForce(dragDir * dragingMag * speed);
         basketballRb.AddTorque(dragDir * speed);
         Debug.Log("top attýk");
-        
+      
     }
     private void OnMouseDown()
     {
