@@ -14,7 +14,7 @@ public class DragAndShoot : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
     
     private void OnMouseDown()

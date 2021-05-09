@@ -13,6 +13,9 @@ TagManager:
   - Basketball
   - Box
   - GameManager
+  - BasketballOfPlayer
+  - Basketball_Skill
+  - Ball
   layers:
   - Default
   - TransparentFX

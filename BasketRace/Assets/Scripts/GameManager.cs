@@ -5,16 +5,50 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int ballCount=10;
+    private int ballCount=0;
     public TextMeshProUGUI scoreText;
+    private GameObject BasketballOfPlayer;
+
     // Start is called before the first frame update
     private void Start()
     {
         scoreText.text = ballCount.ToString();
+        BasketballOfPlayer = GameObject.FindWithTag("BasketballOfPlayer");
+
+        if (ballCount == 0) //Baþlangýçta topun yoksa karakterin elindeki basketbol topu görünmesin.
+        {
+            BasketballOfPlayer.SetActive(false);
+
+        }
     }
+
+   
     public void updateBallCount(int count)
     {
         ballCount += count;
-        scoreText.text = ballCount.ToString();
+
+       
+
+        if (ballCount <= 0)
+        {
+            BasketballOfPlayer.SetActive(false);
+            ballCount = 0;
+            scoreText.text = ballCount.ToString();
+
+        }
+
+        else
+        {
+            if (!BasketballOfPlayer.activeSelf)
+            {
+                
+                BasketballOfPlayer.SetActive(true);
+               
+            }
+
+            scoreText.text = ballCount.ToString();
+            
+        }
+
     }
 }
