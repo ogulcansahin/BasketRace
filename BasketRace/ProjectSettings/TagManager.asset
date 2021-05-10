@@ -15,7 +15,7 @@ TagManager:
   - GameManager
   - BasketballOfPlayer
   - Basketball_Skill
-  - Ball
+  - Stop
   layers:
   - Default
   - TransparentFX

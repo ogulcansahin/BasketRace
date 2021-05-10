@@ -7,15 +7,18 @@ public class BasketDetector : MonoBehaviour
     
     
     startdooranim TheScript;
-    GameObject doorcontrol;
+    
     private void Start()
     {
-        doorcontrol = GameObject.FindGameObjectWithTag("doordetector"); //Ana kapýdaki Tag.
-        TheScript = doorcontrol.GetComponent<startdooranim>();
+        
+        TheScript = GetComponentInChildren<startdooranim>();
+        
+        
         
     }
     private void OnTriggerEnter(Collider other)
     {
+
         
         if (TheScript.actualDoorStatus == false)    //Baþlangýçta kapý kapalýysa ve OnTriggerdan dolayý basket olduðunu anlýyor, basket olduysa giriyor.
         {

@@ -34,10 +34,7 @@ public class MainPlayerController : MonoBehaviour
             run();
         }
         
-        else if (!IsRunning)
-        {
-
-        }
+        
 
     }
     private void run()
@@ -89,6 +86,18 @@ public class MainPlayerController : MonoBehaviour
             gameManager.updateBallCount(random);
             Destroy(collision.gameObject);
         }
+
+       
+    }
+
+    public bool GetIsRunning()
+    {
+        return IsRunning;
+    }
+
+    public void SetIsRunning (bool IsRunning)
+    {
+        this.IsRunning = IsRunning;
     }
 
 
