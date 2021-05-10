@@ -49,7 +49,7 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision) //Kapýnýn önünde beklerken top sayýsý sürekli kontrol edilsin. Eðer yeterli top yoksa game over.
+    private IEnumerator OnCollisionStay(Collision collision) //Kapýnýn önünde beklerken top sayýsý sürekli kontrol edilsin. Eðer yeterli top yoksa game over.
     {
         numberOfBall = gameManager.getBallCount();
         if (doorstatus.actualDoorStatus == false && collision.gameObject.tag == "MainPlayer" && numberOfBall >0) //kapý kapalý, topum var
@@ -62,11 +62,15 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
 
         else if (doorstatus.actualDoorStatus == false && collision.gameObject.tag == "MainPlayer" && numberOfBall == 0) //kapý kapalý, topum yok, game over
         {
-            
-            Debug.Log("GameOver");
-            isRunning = false;
-            mainplayer.SetIsRunning(isRunning);
-            PlayerAnimations[0].SetTrigger("Stop");  
+            yield return new WaitForSeconds(1);
+            if(doorstatus.actualDoorStatus == false)
+            {
+                Debug.Log("GameOver");
+                isRunning = false;
+                mainplayer.SetIsRunning(isRunning);
+                PlayerAnimations[0].SetTrigger("Stop");
+            }
+             
             
         }
 
@@ -85,6 +89,8 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
         }
 
         //Sorun tek topun  varken basket atsan dahi game over olman. 
+
     }
+   
 
 }

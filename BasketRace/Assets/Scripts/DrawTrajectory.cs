@@ -10,12 +10,12 @@ public class DrawTrajectory : MonoBehaviour
     private LineRenderer _lineRenderer; //çizgi çekmek için kullanacaðýz.
 
    
-    private int _lineSegmentCount = 20; //Aimdeki doðrusal çizgi sayýsý.
+    private int _lineSegmentCount = 40; //Aimdeki doðrusal çizgi sayýsý.
 
     
 
     
-    private int _linePointCount =21;
+    private int _linePointCount =39;
 
     private List<Vector3> _linePoints = new List<Vector3>(); //çizgideki noktalarýn koordinatlarý
 
@@ -57,19 +57,27 @@ public class DrawTrajectory : MonoBehaviour
                 velocity.y * stepTimePassed - 0.5f * Physics.gravity.y * stepTimePassed * stepTimePassed,
                 velocity.z * stepTimePassed*0.6f);
 
+
             Vector3 NewPointOnline = startingPoint - MovementVector ;
 
             RaycastHit hit;
             // Raycast(orjin,gideceði nokta, bir collidera çarparsa onu farkettiriyor, maksimum range)
+            // Raycast kýsmý sadece line rendererýn ucunun bir colliderla çarpýþtýðý zaman kesilme iþlemini gerçekleþtiriyor.
             if (Physics.Raycast(_linePoints[i - 1], NewPointOnline - _linePoints[i - 1], out hit, (NewPointOnline - _linePoints[i - 1]).magnitude))
             {
 
-                _linePoints.Add(hit.point);
+                
+                    _linePoints.Add(hit.point);
 
                 break;
             }
-
-            _linePoints.Add(NewPointOnline);
+            
+            
+            
+            
+                _linePoints.Add(NewPointOnline);
+            
+            
 
 
         }
