@@ -6,11 +6,12 @@ public class DragAndShoot : MonoBehaviour
 {
     private Vector3 mousePressDownPos;
     private Vector3 mouseReleasePos;
-    private Vector3 atisegimi;
+    private Vector3 shootingDrag;
     private GameManager gameManager;
     private Rigidbody rb;
     private bool isShoot=false;
-    private Vector3 maximumforcefordistance;
+    private Vector3 maximumForce;
+    private Vector3 mousePosition;
 
     private void Start()
     {
@@ -24,15 +25,15 @@ public class DragAndShoot : MonoBehaviour
     }
     private void OnMouseDrag() //Mouse colliderýn üzerine týklý bekliyor. Daha kaldýrmamýþ.
     {
-        maximumforcefordistance = Input.mousePosition;
+        mousePosition = Input.mousePosition;
+
+        if (maximumForce.y > 800f)
+        {
+            maximumForce.y = 800f;
+        }
         
+        Vector3 forceInit = (mousePosition - mousePressDownPos);
         
-        Vector3 forceInit = (maximumforcefordistance - mousePressDownPos);
-        Debug.Log("Mouse Position: "+ Input.mousePosition);
-        Debug.Log("Width:" + Screen.width);
-        Debug.Log("Height: " + Screen.height);
-        Debug.Log("Height/moseposition: " + Screen.height / Input.mousePosition.y);
-        Debug.Log("Width/moseposition: " + Screen.width / Input.mousePosition.x);
 
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
 
@@ -48,16 +49,16 @@ public class DragAndShoot : MonoBehaviour
 
         DrawTrajectory.Instance.HideLine();
         mouseReleasePos = Input.mousePosition;
+
+        shootingDrag = mouseReleasePos - mousePressDownPos;
         
-        atisegimi = mouseReleasePos - mousePressDownPos;
-        
-        if (atisegimi.y < 0)
+        if (shootingDrag.y < 0)
         {
-            atisegimi.y = atisegimi.y * -1;
+            shootingDrag.y = shootingDrag.y * -1;
         }
         //atisegimi.x = atisegimi.x * -1;
         
-        Shoot(atisegimi);
+        Shoot(shootingDrag);
 
     }
 
