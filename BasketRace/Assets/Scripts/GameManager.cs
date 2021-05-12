@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int ballCount=1;
+    private int ballCount=5;
     public TextMeshProUGUI scoreText;
     private GameObject BasketballOfPlayer;
 
     // Start is called before the first frame update
     private void Start()
     {
+        
         scoreText.text = ballCount.ToString();
         BasketballOfPlayer = GameObject.FindWithTag("BasketballOfPlayer");
 
