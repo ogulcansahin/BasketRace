@@ -6,18 +6,18 @@ public class MainPlayerController : MonoBehaviour
 {
     GameObject mainPlayer;
     GameObject road;
-    private GameManager gameManager;
     float road_x;
     bool IsRunning = true;
     bool isRight = true;
-    
+    private GameManager gameManager;
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         mainPlayer = GameObject.FindWithTag("MainPlayer");
         road = GameObject.FindWithTag("MainPlayerFloor");
         road_x = (road.transform.position - (road.transform.localScale * 0.215f)).x;
+        
     }
     private void Update()
     {
@@ -78,16 +78,20 @@ public class MainPlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Basketball")
+        if (collision.gameObject.tag == "Basketball_Skill")
         {
             gameManager.updateBallCount(1);
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.tag == "Box")
         {
-            int random = Random.Range(-2,3);
+            int random = Random.Range(-2, 3);
             gameManager.updateBallCount(random);
             Destroy(collision.gameObject);
         }
     }
+
+
+
+
 }
