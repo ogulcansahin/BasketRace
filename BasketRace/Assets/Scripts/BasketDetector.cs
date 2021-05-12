@@ -13,12 +13,9 @@ public class BasketDetector : MonoBehaviour
         
         TheScript = GetComponentInChildren<startdooranim>();
         
-        
-        
     }
     private void OnTriggerEnter(Collider other)
     {
-
         
         if (TheScript.actualDoorStatus == false)    //Baþlangýçta kapý kapalýysa ve OnTriggerdan dolayý basket olduðunu anlýyor, basket olduysa giriyor.
         {
@@ -43,8 +40,6 @@ public class BasketDetector : MonoBehaviour
             TheScript.LeftDoor.SetInteger("Stop", 1);
             TheScript.RightDoor.SetInteger("Stop", 1);
         }
-
-
 
      }
 }
