@@ -10,12 +10,9 @@ public class MainPlayerController : MonoBehaviour
     bool IsRunning = true;
     bool isRight = true;
     private GameManager gameManager;
-<<<<<<< HEAD
-=======
     Vector2 firstPressPos;
     Vector2 secondPressPos;
     Vector2 currentSwipe;
->>>>>>> c6da3f16731eb9c9c1c2bbee67b59028b4a06494
 
     void Start()
     {
@@ -150,11 +147,3 @@ public class MainPlayerController : MonoBehaviour
 
 
     }
-<<<<<<< HEAD
-
-
-
-
-}
-=======
->>>>>>> c6da3f16731eb9c9c1c2bbee67b59028b4a06494

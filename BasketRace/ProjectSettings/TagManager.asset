@@ -15,11 +15,7 @@ TagManager:
   - GameManager
   - BasketballOfPlayer
   - Basketball_Skill
-<<<<<<< HEAD
-  - Ball
-=======
   - Stop
->>>>>>> c6da3f16731eb9c9c1c2bbee67b59028b4a06494
   layers:
   - Default
   - TransparentFX

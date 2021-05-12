@@ -27,17 +27,9 @@ public class DragAndShoot : MonoBehaviour
         basketball_of_player = GameObject.FindWithTag("BasketballOfPlayer");
         rb = GetComponent<Rigidbody>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-<<<<<<< HEAD
-    }
-    
-    private void OnMouseDown()
-    {
-        mousePressDownPos = Input.mousePosition;
-=======
         cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         
         
->>>>>>> c6da3f16731eb9c9c1c2bbee67b59028b4a06494
     }
 
     private void Update()
