@@ -7,11 +7,11 @@ public class BasketDetector : MonoBehaviour
     
     
     startdooranim TheScript;
-    GameObject doorcontrol;
+    
     private void Start()
     {
-        doorcontrol = GameObject.FindGameObjectWithTag("doordetector"); //Ana kapýdaki Tag.
-        TheScript = doorcontrol.GetComponent<startdooranim>();
+        
+        TheScript = GetComponentInChildren<startdooranim>();
         
     }
     private void OnTriggerEnter(Collider other)
@@ -40,8 +40,6 @@ public class BasketDetector : MonoBehaviour
             TheScript.LeftDoor.SetInteger("Stop", 1);
             TheScript.RightDoor.SetInteger("Stop", 1);
         }
-
-
 
      }
 }

@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private Vector3 SpawnPos;
     public GameObject spawnObject;
     private float newSpawnDuration = 1.0f;
-    
-
-    #region Singleton
-
-
+    private GameObject basketballofplayer;
+    private GameObject mainplayer;
+    private Vector3 spawn_position;
     public static Spawner Instance;
 
 
@@ -20,19 +17,21 @@ public class Spawner : MonoBehaviour
         Instance = this;
     }
 
-    #endregion
-
-
     private void Start()
     {
-
-        SpawnPos = transform.position;
-
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        basketballofplayer = GameObject.FindWithTag("BasketballOfPlayer");
+        mainplayer = GameObject.FindWithTag("MainPlayer");
+        
+        spawn_position = mainplayer.transform.position + new Vector3(0f,+0.2f,+0.1f);
+        
     }
 
     void SpawnNewObject ()
     {
-        Instantiate(spawnObject, SpawnPos, Quaternion.identity);
+        Instantiate(spawnObject, spawn_position, Quaternion.identity);
+        basketballofplayer.GetComponent<MeshRenderer>().enabled = true;
     }
 
     public void NewSpawnRequest ()

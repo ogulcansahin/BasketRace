@@ -10,6 +10,12 @@ public class MainPlayerController : MonoBehaviour
     bool IsRunning = true;
     bool isRight = true;
     private GameManager gameManager;
+<<<<<<< HEAD
+=======
+    Vector2 firstPressPos;
+    Vector2 secondPressPos;
+    Vector2 currentSwipe;
+>>>>>>> c6da3f16731eb9c9c1c2bbee67b59028b4a06494
 
     void Start()
     {
@@ -21,10 +27,7 @@ public class MainPlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeLine();
-        }
+        Swipe();
     }
     // Update is called once per frame
     private void FixedUpdate()
@@ -34,10 +37,7 @@ public class MainPlayerController : MonoBehaviour
             run();
         }
         
-        else if (!IsRunning)
-        {
-
-        }
+        
 
     }
     private void run()
@@ -89,9 +89,72 @@ public class MainPlayerController : MonoBehaviour
             gameManager.updateBallCount(random);
             Destroy(collision.gameObject);
         }
+
+       
+    }
+
+    public bool GetIsRunning()
+    {
+        return IsRunning;
+    }
+
+    public void SetIsRunning (bool IsRunning)
+    {
+        this.IsRunning = IsRunning;
+    }
+
+    public void Swipe()
+    {
+        if (Input.touches.Length > 0)
+        {
+            Touch t = Input.GetTouch(0);
+            if (t.phase == TouchPhase.Began)
+            {
+                //save began touch 2d point
+                firstPressPos = new Vector2(t.position.x, t.position.y);
+            }
+            if (t.phase == TouchPhase.Ended)
+            {
+                //save ended touch 2d point
+                secondPressPos = new Vector2(t.position.x, t.position.y);
+
+                //create vector from the two points
+                currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+
+                //normalize the 2d vector
+                currentSwipe.Normalize();
+
+                
+                //swipe left
+                if (currentSwipe.x < 0)
+             {
+                    if (isRight == true)
+                    {
+                        ChangeLine();
+                    }
+                }
+                //swipe right
+                if (currentSwipe.x > 0)
+             {
+                    if(isRight == false)
+                    {
+                        ChangeLine();
+                    }
+                    
+                }
+            }
+        }
     }
 
 
 
 
+    }
+<<<<<<< HEAD
+
+
+
+
 }
+=======
+>>>>>>> c6da3f16731eb9c9c1c2bbee67b59028b4a06494
