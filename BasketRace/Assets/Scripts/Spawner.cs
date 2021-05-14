@@ -5,12 +5,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject spawnObject;
-    private float newSpawnDuration = 1.0f;
+    private float newSpawnDuration = 0.5f;
     private GameObject basketballofplayer;
     private GameObject mainplayer;
     private Vector3 spawn_position;
     public static Spawner Instance;
-
 
     private void Awake()
     {
@@ -23,13 +22,14 @@ public class Spawner : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         basketballofplayer = GameObject.FindWithTag("BasketballOfPlayer");
         mainplayer = GameObject.FindWithTag("MainPlayer");
-        
-        spawn_position = mainplayer.transform.position + new Vector3(0f,+0.2f,+0.1f);
-        
+        transform.parent = mainplayer.transform;
+
     }
 
     void SpawnNewObject ()
     {
+        
+        spawn_position = mainplayer.transform.position + new Vector3(0f, +0.2f, +0.1f);
         Instantiate(spawnObject, spawn_position, Quaternion.identity);
         basketballofplayer.GetComponent<MeshRenderer>().enabled = true;
     }
@@ -38,8 +38,5 @@ public class Spawner : MonoBehaviour
     {
         Invoke("SpawnNewObject", newSpawnDuration);
     }
-
-
-    // Update is called once per frame
     
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int ballCount=5;
+    private int ballCount=50;
     public TextMeshProUGUI scoreText;
     private GameObject BasketballOfPlayer;
 

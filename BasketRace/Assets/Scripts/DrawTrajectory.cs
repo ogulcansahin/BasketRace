@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class DrawTrajectory : MonoBehaviour
 {
-    
-
     [SerializeField]
     private LineRenderer _lineRenderer; //çizgi çekmek için kullanacaðýz.
-    private int _lineSegmentCount = 200; //Aimdeki doðrusal çizgi sayýsý.
-    private int _linePointCount =199;
+    private int _lineSegmentCount = 50; //Aimdeki doðrusal çizgi sayýsý.
+    private int _linePointCount =49;
     private List<Vector3> _linePoints = new List<Vector3>(); //çizgideki noktalarýn koordinatlarý
-
-    #region Singleton
 
     public static DrawTrajectory Instance;
 
@@ -21,14 +17,10 @@ public class DrawTrajectory : MonoBehaviour
         Instance = this;
     }
 
-    #endregion
-
-
-
-
     public void UpdateTrajectory (Vector3 forceVector, Rigidbody rigidBody, Vector3 startingPoint)
     {
-       
+
+        forceVector = forceVector / 2;
         if (forceVector.y < 0)
         {
             forceVector.x = forceVector.x * -1;
@@ -49,7 +41,7 @@ public class DrawTrajectory : MonoBehaviour
             Vector3 MovementVector = new Vector3(
                 velocity.x * stepTimePassed,
                 velocity.y * stepTimePassed - 0.5f * Physics.gravity.y * stepTimePassed * stepTimePassed,
-                velocity.z * stepTimePassed*0.6f);
+                velocity.z * stepTimePassed*1f);
 
 
             Vector3 NewPointOnline = startingPoint - MovementVector ;
@@ -64,7 +56,7 @@ public class DrawTrajectory : MonoBehaviour
                 break;
             }
             
-                _linePoints.Add(NewPointOnline);
+            _linePoints.Add(NewPointOnline);
            
         }
 

@@ -41,9 +41,9 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
         if (doorstatus.actualDoorStatus == false && collision.gameObject.tag == "MainPlayer" && numberOfBall>0) //Eðer kapý kapalý ve kapýnýn önüne mainplayer geldiyse
             // top sayýsýný kontrol et. Eðer topu kaldýysa henüz elenmemiþ. Þut çekmesini bekle.
         {
-            
-            PlayerAnimations[0].SetTrigger("Stop"); //MainPlayerdaki koþma animasyonunu durdurup idle animasyonunu baþlatýr. Condition'ýn adý stop yoksa default biþi yok.
-            PlayerAnimations[1].SetTrigger("Stop"); //MainPlayerdaki top sektirme animasyonunu durdurur. Bu da default deðil transitionlar arasýndaki condition.
+            PlayerAnimations[0].SetTrigger("Stop");
+            PlayerAnimations[0].SetBool("Stop" , true); //MainPlayerdaki koþma animasyonunu durdurup idle animasyonunu baþlatýr. Condition'ýn adý stop yoksa default biþi yok.
+            PlayerAnimations[1].SetTrigger("StopDripling"); //MainPlayerdaki top sektirme animasyonunu durdurur. Bu da default deðil transitionlar arasýndaki condition.
             
 
         }
@@ -54,6 +54,9 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
         numberOfBall = gameManager.getBallCount();
         if (doorstatus.actualDoorStatus == false && collision.gameObject.tag == "MainPlayer" && numberOfBall >0) //kapý kapalý, topum var
         {
+            PlayerAnimations[0].SetBool("Stop", true);
+            PlayerAnimations[0].ResetTrigger("RunCondition");
+            PlayerAnimations[1].SetTrigger("StopDripling");
             isRunning = false; //hareket etme.
             mainplayer.SetIsRunning(isRunning);
         }
@@ -66,9 +69,11 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
             if(doorstatus.actualDoorStatus == false)
             {
                 Debug.Log("GameOver");
+                PlayerAnimations[0].SetTrigger("Stop");
                 isRunning = false;
                 mainplayer.SetIsRunning(isRunning);
-                PlayerAnimations[0].SetTrigger("Stop");
+                PlayerAnimations[0].SetBool("Stop", true);
+                PlayerAnimations[0].ResetTrigger("RunCondition");
             }
              
             
@@ -76,7 +81,7 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
 
         if (doorstatus.actualDoorStatus == true && collision.gameObject.tag == "MainPlayer")    //kapý açýlýrsa koþmaya baþla. 
         {
-            
+            PlayerAnimations[0].SetBool("Stop", false);
             PlayerAnimations[0].SetTrigger("RunCondition"); //MainPlayerdaki koþma animasyonunu baþlatýr.
             if (numberOfBall != 0)              //topum varsa
             {

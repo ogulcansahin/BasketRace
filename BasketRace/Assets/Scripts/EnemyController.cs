@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
     }
     private void run()
     {
-        transform.Translate(transform.forward * Time.deltaTime * 0.8f);
+        transform.Translate(transform.forward * Time.deltaTime * 0.5f);
     }
 
     private void ChangeLine()

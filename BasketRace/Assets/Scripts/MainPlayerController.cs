@@ -13,6 +13,8 @@ public class MainPlayerController : MonoBehaviour
     Vector2 firstPressPos;
     Vector2 secondPressPos;
     Vector2 currentSwipe;
+    private float startTime;
+    private float passingTime;
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class MainPlayerController : MonoBehaviour
     private void Update()
     {
         Swipe();
+
     }
     // Update is called once per frame
     private void FixedUpdate()
@@ -33,13 +36,11 @@ public class MainPlayerController : MonoBehaviour
         {
             run();
         }
-        
-        
-
+ 
     }
     private void run()
         {
-            transform.Translate(transform.forward * Time.deltaTime * 0.8f);
+            transform.Translate(transform.forward * Time.deltaTime * 0.5f);
         }
 
     private void ChangeLine()
@@ -86,8 +87,6 @@ public class MainPlayerController : MonoBehaviour
             gameManager.updateBallCount(random);
             Destroy(collision.gameObject);
         }
-
-       
     }
 
     public bool GetIsRunning()
@@ -107,10 +106,12 @@ public class MainPlayerController : MonoBehaviour
             Touch t = Input.GetTouch(0);
             if (t.phase == TouchPhase.Began)
             {
+                startTime = Time.time;
                 //save began touch 2d point
                 firstPressPos = new Vector2(t.position.x, t.position.y);
             }
-            if (t.phase == TouchPhase.Ended)
+            passingTime = Time.time - startTime;
+            if (t.phase == TouchPhase.Ended && passingTime < 0.35f)
             {
                 //save ended touch 2d point
                 secondPressPos = new Vector2(t.position.x, t.position.y);
@@ -121,7 +122,6 @@ public class MainPlayerController : MonoBehaviour
                 //normalize the 2d vector
                 currentSwipe.Normalize();
 
-                
                 //swipe left
                 if (currentSwipe.x < 0)
              {
@@ -137,13 +137,8 @@ public class MainPlayerController : MonoBehaviour
                     {
                         ChangeLine();
                     }
-                    
                 }
             }
         }
     }
-
-
-
-
-    }
+}
