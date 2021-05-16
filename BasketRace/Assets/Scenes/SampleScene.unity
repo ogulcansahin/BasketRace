@@ -2806,6 +2806,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 199402818838746287, guid: 574e973df7528624a980f873a40f9dc4,
+        type: 3}
+      propertyPath: m_Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199402818838746287, guid: 574e973df7528624a980f873a40f9dc4,
+        type: 3}
+      propertyPath: m_Parameters.textureMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574e973df7528624a980f873a40f9dc4, type: 3}
 --- !u!1001 &1348015932366031057
@@ -3115,7 +3125,7 @@ PrefabInstance:
     - target: {fileID: 7556586652588862634, guid: 84fc1ecfd699a4e44b5fd8a7506d386c,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84fc1ecfd699a4e44b5fd8a7506d386c, type: 3}

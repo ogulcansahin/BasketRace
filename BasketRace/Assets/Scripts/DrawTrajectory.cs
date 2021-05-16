@@ -6,8 +6,8 @@ public class DrawTrajectory : MonoBehaviour
 {
     [SerializeField]
     private LineRenderer _lineRenderer; //çizgi çekmek için kullanacaðýz.
-    private int _lineSegmentCount = 50; //Aimdeki doðrusal çizgi sayýsý.
-    private int _linePointCount =49;
+    private int _lineSegmentCount = 25; //Aimdeki doðrusal çizgi sayýsý.
+    private int _linePointCount =26;
     private List<Vector3> _linePoints = new List<Vector3>(); //çizgideki noktalarýn koordinatlarý
 
     public static DrawTrajectory Instance;
@@ -19,7 +19,7 @@ public class DrawTrajectory : MonoBehaviour
 
     public void UpdateTrajectory (Vector3 forceVector, Rigidbody rigidBody, Vector3 startingPoint)
     {
-
+        
         forceVector = forceVector / 2;
         if (forceVector.y < 0)
         {
@@ -55,9 +55,13 @@ public class DrawTrajectory : MonoBehaviour
 
                 break;
             }
+
             
-            _linePoints.Add(NewPointOnline);
-           
+                _linePoints.Add(NewPointOnline);
+            _lineRenderer.materials[0].mainTextureScale = new Vector3(10f, 1f, 1f);
+
+
+
         }
 
         _lineRenderer.positionCount = _linePoints.Count;

@@ -9,7 +9,6 @@ public class DragAndShoot : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody rb;
     private bool isShoot=false;
-    private Vector3 maximumForce;
     private Animator playerAnimations;
     private GameObject basketball_of_player;
     private Vector3 touchReleasePos;
@@ -17,9 +16,9 @@ public class DragAndShoot : MonoBehaviour
     Vector3 forceInit;
     private float startTime;
     private float passingTime;
-
-    //private float maxdistance_y_for1920_1080 = 760f;
-    //private float mindistance_y_for1920_1080 = 240f;
+    private Camera cam;
+    private Vector3 ScreenLimitation;
+    private Vector3 ScreenLimitationAsWorldSpace;
 
     private void Start()
     {
@@ -27,32 +26,56 @@ public class DragAndShoot : MonoBehaviour
         basketball_of_player = GameObject.FindWithTag("BasketballOfPlayer");
         rb = GetComponent<Rigidbody>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        ScreenLimitation = new Vector3((Screen.width)/4,(Screen.height)/4, (Screen.height) / 4);
+        ScreenLimitationAsWorldSpace = cam.ScreenToWorldPoint(ScreenLimitation);
+        
+        
     }
 
     private void Update()
     {
 
         BallCount = gameManager.getBallCount();
-        
-        if (Input.touches.Length > 0 && BallCount>0)
+
+        if (Input.touches.Length > 0 && BallCount > 0)
         {
-            
+
             Touch t = Input.GetTouch(0);
 
-            if(t.phase == TouchPhase.Began )
+            if (t.phase == TouchPhase.Began)
             {
                 startTime = Time.time;
                 TouchPressDown = new Vector2(t.position.x, t.position.y);
-                
+
             }
 
             passingTime = Time.time - startTime;
             if (t.phase == TouchPhase.Moved && passingTime > 0.35f)
             {
-                
+
                 Vector3 curPosition = t.position;
                 forceInit = (curPosition - TouchPressDown);
-                
+                if (forceInit.y > (-ScreenLimitationAsWorldSpace).y * 2f)
+                {
+                    forceInit.y = (ScreenLimitationAsWorldSpace).y * -2f;
+                }
+
+                if (forceInit.y < (-ScreenLimitationAsWorldSpace).y / 3f)
+                {
+                    forceInit.y = (ScreenLimitationAsWorldSpace).y / -3f;
+                }
+
+                if (forceInit.x > (-ScreenLimitationAsWorldSpace).x / 2f && forceInit.x > 0)
+                {
+                    forceInit.x = (-ScreenLimitationAsWorldSpace).x / 2f;
+                }
+
+                if (forceInit.x < (ScreenLimitationAsWorldSpace).x / 2f && forceInit.x < 0)
+                {
+                    forceInit.x = (ScreenLimitationAsWorldSpace).x / 2f;
+                }
+
 
                 //Z eksenine de y ekseni atandý.
                 forceInit = (new Vector3(forceInit.x, forceInit.y, forceInit.y));
@@ -60,20 +83,58 @@ public class DragAndShoot : MonoBehaviour
                 if (!isShoot)
                     DrawTrajectory.Instance.UpdateTrajectory(forceInit, rb, transform.position);
             }
-            if(t.phase == TouchPhase.Stationary && passingTime > 0.35f)
+            if (t.phase == TouchPhase.Stationary && passingTime > 0.35f)
             {
                 forceInit = (new Vector3(forceInit.x, forceInit.y, forceInit.y));
+                if (forceInit.y > (-ScreenLimitationAsWorldSpace).y * 2f)
+                {
+                    forceInit.y = (ScreenLimitationAsWorldSpace).y * -2f;
+                }
 
+                if (forceInit.y < (-ScreenLimitationAsWorldSpace).y / 3f)
+                {
+                    forceInit.y = (ScreenLimitationAsWorldSpace).y / -3f;
+                }
+
+                if (forceInit.x > (-ScreenLimitationAsWorldSpace).x / 2f && forceInit.x > 0)
+                {
+                    forceInit.x = (-ScreenLimitationAsWorldSpace).x / 2f;
+                }
+
+                if (forceInit.x < (ScreenLimitationAsWorldSpace).x / 2f && forceInit.x < 0)
+                {
+                    forceInit.x = (ScreenLimitationAsWorldSpace).x / 2f;
+                }
 
                 if (!isShoot)
                     DrawTrajectory.Instance.UpdateTrajectory(forceInit, rb, transform.position);
             }
-            if(t.phase == TouchPhase.Ended && passingTime > 0.35f)
+            if (t.phase == TouchPhase.Ended && passingTime > 0.35f)
             {
                 DrawTrajectory.Instance.HideLine();
                 touchReleasePos = t.position;
 
                 atisegimi = (touchReleasePos - TouchPressDown);//2f; //Ekranýn sensitivitesini ayarladýk.
+                if (atisegimi.y > (-ScreenLimitationAsWorldSpace).y * 2f)
+                {
+                    atisegimi.y = (ScreenLimitationAsWorldSpace).y * -2f;
+                }
+
+                if (atisegimi.y < (-ScreenLimitationAsWorldSpace).y / 3f)
+                {
+                    atisegimi.y = (ScreenLimitationAsWorldSpace).y / -3f;
+
+                }
+
+                if (atisegimi.x > (-ScreenLimitationAsWorldSpace).x / 2f && atisegimi.x > 0)
+                {
+                    atisegimi.x = (-ScreenLimitationAsWorldSpace).x / 2f;
+                }
+
+                if (atisegimi.x < (ScreenLimitationAsWorldSpace).x / 2f && atisegimi.x < 0)
+                {
+                    atisegimi.x = (ScreenLimitationAsWorldSpace).x / 2f;
+                }
 
                 atisegimi = atisegimi / 2;
 
@@ -81,7 +142,7 @@ public class DragAndShoot : MonoBehaviour
                 {
                     atisegimi.y = atisegimi.y * -1;
                 }
-                
+
                 playerAnimations.SetTrigger("ShootCondition");
                 basketball_of_player.GetComponent<MeshRenderer>().enabled = false;
                 gameObject.GetComponent<MeshRenderer>().enabled = true;
@@ -91,6 +152,7 @@ public class DragAndShoot : MonoBehaviour
             }
         }
     }
+    
 
 
     void Shoot (Vector3 Force)
