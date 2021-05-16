@@ -100,6 +100,7 @@ public class DragAndShoot : MonoBehaviour
         rb.AddForce(new Vector3(Force.x, (Force.y * 1.035f), (Force.y * 1f)));
         isShoot = true;
         Spawner.Instance.NewSpawnRequest();
+        transform.parent = null;
         gameManager.updateBallCount(-1);
     }
 }

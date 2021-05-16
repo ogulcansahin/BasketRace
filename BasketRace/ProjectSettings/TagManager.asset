@@ -16,6 +16,8 @@ TagManager:
   - BasketballOfPlayer
   - Basketball_Skill
   - Stop
+  - PlayerStart
+  - PlayerFinish
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - UI
   - Player1
   - Door
-  - 
+  - ParticleUI
   - 
   - 
   - 
@@ -50,6 +52,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: ParticleUI
+    uniqueID: 2073183317
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
