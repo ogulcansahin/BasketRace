@@ -18,6 +18,8 @@ TagManager:
   - Stop
   - PlayerStart
   - PlayerFinish
+  - EnemyFinish
+  - EnemyStart
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - UI
   - Player1
   - Door
-  - ParticleUI
+  - 
   - 
   - 
   - 
@@ -52,9 +54,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Particle
-    uniqueID: 2073183317
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

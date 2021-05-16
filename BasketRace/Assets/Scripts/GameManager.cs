@@ -8,19 +8,24 @@ public class GameManager : MonoBehaviour
 {
     private int ballCount=50;
 
-    public GameObject progressBarParticle;
     public Image playerIndicator;
-    public Slider progressBar;
+    public Slider playerProgressBar;
+    public Slider enemyProgressBar;
     public TextMeshProUGUI scoreText;
 
     private GameObject BasketballOfPlayer;
     private GameObject playerStart;
     private GameObject playerFinish;
+    private GameObject enemyStart;
+    private GameObject enemyFinish;
 
     private GameObject mainPlayer;
-    private float levelPercentage = 0;
+    private GameObject enemyPlayer;
+    private float playerLevelPercentage = 0;
+    private float enemyLevelPercentage = 0;
     private float levelLength;
-    private float startZ;
+    private float playerStartZ;
+    private float enemyStartZ;
 
     // Start is called before the first frame update
     private void Start()
@@ -30,11 +35,15 @@ public class GameManager : MonoBehaviour
 
         BasketballOfPlayer = GameObject.FindWithTag("BasketballOfPlayer");
         mainPlayer = GameObject.FindWithTag("MainPlayer");
+        enemyPlayer = GameObject.FindWithTag("EnemyPlayer");
         playerStart = GameObject.FindWithTag("PlayerStart");
         playerFinish = GameObject.FindWithTag("PlayerFinish");
+        enemyStart = GameObject.FindWithTag("EnemyStart");
+        enemyFinish = GameObject.FindWithTag("EnemyFinish");
 
         levelLength = playerFinish.transform.position.z - playerStart.transform.position.z;
-        startZ = playerStart.transform.position.z;
+        playerStartZ = playerStart.transform.position.z;
+        enemyStartZ = enemyStart.transform.position.z;
 
         if (ballCount == 0) //Baþlangýçta topun yoksa karakterin elindeki basketbol topu görünmesin.
         {
@@ -45,10 +54,12 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-              
-        levelPercentage = ((mainPlayer.transform.position.z - startZ) /levelLength);
-        progressBar.value = levelPercentage;
-           
+
+        playerLevelPercentage = ((mainPlayer.transform.position.z - playerStartZ) /levelLength);
+        playerProgressBar.value = playerLevelPercentage;
+
+        enemyLevelPercentage = ((enemyPlayer.transform.position.z - enemyStartZ) / levelLength);
+        enemyProgressBar.value = enemyLevelPercentage;
     }
 
     public void updateBallCount(int count)
