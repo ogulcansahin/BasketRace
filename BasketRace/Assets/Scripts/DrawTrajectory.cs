@@ -6,8 +6,8 @@ public class DrawTrajectory : MonoBehaviour
 {
     [SerializeField]
     private LineRenderer _lineRenderer; //çizgi çekmek için kullanacaðýz.
-    private int _lineSegmentCount = 25; //Aimdeki doðrusal çizgi sayýsý.
-    private int _linePointCount =26;
+    private int _lineSegmentCount = 200; //Aimdeki doðrusal çizgi sayýsý.
+    private int _linePointCount = 200;
     private List<Vector3> _linePoints = new List<Vector3>(); //çizgideki noktalarýn koordinatlarý
 
     public static DrawTrajectory Instance;
@@ -58,7 +58,7 @@ public class DrawTrajectory : MonoBehaviour
 
             
                 _linePoints.Add(NewPointOnline);
-            _lineRenderer.materials[0].mainTextureScale = new Vector3(10f, 1f, 1f);
+            _lineRenderer.materials[0].mainTextureScale = new Vector3(6f, 1f, 1f);
 
 
 

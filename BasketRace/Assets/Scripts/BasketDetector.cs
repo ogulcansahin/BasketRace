@@ -17,8 +17,7 @@ public class BasketDetector : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        basketEffect.Play();
-        
+        basketEffect.Play();        
         if (TheScript.actualDoorStatus == false)    //Baþlangýçta kapý kapalýysa ve OnTriggerdan dolayý basket olduðunu anlýyor, basket olduysa giriyor.
         {
             
