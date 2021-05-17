@@ -8,13 +8,18 @@ public class MainPlayerController : MonoBehaviour
     GameObject road;
     float road_x;
     bool IsRunning = true;
+    bool IsPowerUpRun = false;
     bool isRight = true;
+    bool IsImpact = false;
     private GameManager gameManager;
     Vector2 firstPressPos;
     Vector2 secondPressPos;
     Vector2 currentSwipe;
     private float startTime;
     private float passingTime;
+    private Animator [] MainPlayerAnimator;
+    private int dieCondition = 0; // Die condition sürekli triggerlanmasýn diye.
+    private ParticleSystem [] powerUpRunParticle;
 
     void Start()
     {
@@ -22,6 +27,8 @@ public class MainPlayerController : MonoBehaviour
         mainPlayer = GameObject.FindWithTag("MainPlayer");
         road = GameObject.FindWithTag("MainPlayerFloor");
         road_x = (road.transform.position - (road.transform.localScale * 0.215f)).x;
+        MainPlayerAnimator = gameObject.GetComponentsInChildren<Animator>();
+        powerUpRunParticle = gameObject.GetComponentsInChildren<ParticleSystem>();
         
     }
     private void Update()
@@ -32,11 +39,21 @@ public class MainPlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (IsRunning)
+        if (IsRunning && IsPowerUpRun != true && !IsImpact)
         {
             run();
         }
- 
+
+        if (IsPowerUpRun && !IsImpact)
+        {
+            StartCoroutine(PowerUpRun());
+        }
+
+        if (IsImpact)
+        {
+            StartCoroutine(Impact());
+        }
+
     }
     private void run()
         {
@@ -83,9 +100,28 @@ public class MainPlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Box")
         {
-            int random = Random.Range(-2, 3);
-            gameManager.updateBallCount(random);
-            Destroy(collision.gameObject);
+            int chance = Random.Range(1, 6); //Eðer floatsa max deðer inclusive, deðilse max deðerin bir altý inclusive oluyormuþ.
+
+            if(chance == 1 || chance == 2 || chance == 3)
+            {
+                int random = Random.Range(-2, 3);
+                gameManager.updateBallCount(random);
+                Destroy(collision.gameObject);
+            }
+
+            if(chance == 4) // Kutuya takýlsýn.
+            {
+                IsImpact = true;
+                Destroy(collision.gameObject);
+            }
+
+            if (chance == 5) // Hýzlansýn, hiçbir þeye çarpmasýn ve 3 top toplasýn.
+            {
+                gameManager.updateBallCount(3);
+                IsPowerUpRun = true;
+                Destroy(collision.gameObject);
+            }
+
         }
     }
 
@@ -140,5 +176,45 @@ public class MainPlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator PowerUpRun()
+    {
+        MainPlayerAnimator[0].SetFloat("RunSpeed", 2f);
+        MainPlayerAnimator[1].SetFloat("DriplingSpeed", 2f);
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        transform.Translate(transform.forward * Time.deltaTime * 1.5f);
+        if (!powerUpRunParticle[0].isPlaying)
+        {
+            powerUpRunParticle[0].Play();
+        }
+        yield return new WaitForSeconds(2.5f);
+        powerUpRunParticle[0].Stop();
+        gameObject.GetComponent<BoxCollider>().enabled = true;
+        IsPowerUpRun = false;
+        MainPlayerAnimator[0].SetFloat("RunSpeed", 1f);
+        MainPlayerAnimator[1].SetFloat("DriplingSpeed", 1.5f);
+
+    }
+
+    private IEnumerator Impact()
+    {
+        if (dieCondition == 0)
+            MainPlayerAnimator[0].SetTrigger("DieCondition");
+        dieCondition = 1;
+        MainPlayerAnimator[0].SetFloat("RunSpeed", 0f);
+        MainPlayerAnimator[1].SetFloat("DriplingSpeed", 0f);
+        if (!powerUpRunParticle[1].isPlaying)
+        {
+            powerUpRunParticle[1].Play();
+        }
+        transform.Translate(transform.forward * -1 * Time.deltaTime * 0.2f);
+        yield return new WaitForSeconds(1f);
+        powerUpRunParticle[1].Stop();
+        dieCondition = 0;
+        IsImpact = false;
+        MainPlayerAnimator[0].SetFloat("RunSpeed", 1f);
+        MainPlayerAnimator[1].SetFloat("DriplingSpeed", 1.5f);
+
     }
 }

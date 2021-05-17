@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int ballCount=50;
+    private int ballCount=5;
 
     public Image playerIndicator;
     public Slider playerProgressBar;

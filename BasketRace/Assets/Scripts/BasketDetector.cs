@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class BasketDetector : MonoBehaviour
 {
-    
-    
+
+    private ParticleSystem basketEffect;
     startdooranim TheScript;
     
     private void Start()
     {
         
         TheScript = GetComponentInChildren<startdooranim>();
+        basketEffect = gameObject.GetComponentInChildren<ParticleSystem>();
         
     }
     private void OnTriggerEnter(Collider other)
     {
+        basketEffect.Play();
         
         if (TheScript.actualDoorStatus == false)    //Baþlangýçta kapý kapalýysa ve OnTriggerdan dolayý basket olduðunu anlýyor, basket olduysa giriyor.
         {
