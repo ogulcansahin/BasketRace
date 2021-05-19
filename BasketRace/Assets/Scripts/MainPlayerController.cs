@@ -222,5 +222,6 @@ public class MainPlayerController : MonoBehaviour
         MainPlayerAnimator[0].SetFloat("RunSpeed", 1f);
         MainPlayerAnimator[1].SetFloat("DriplingSpeed", 1.5f);
 
+
     }
 }

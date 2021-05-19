@@ -35,6 +35,7 @@ public class DragAndShoot : MonoBehaviour
 
     private void Update()
     {
+        playerAnimations.ResetTrigger("ShootCondition");
         BallCount = gameManager.getBallCount();
 
         if (Input.touches.Length > 0 && BallCount > 0)
@@ -116,7 +117,7 @@ public class DragAndShoot : MonoBehaviour
                     atisegimi.x = (ScreenLimitationAsWorldSpace).x;
                 }
 
-                atisegimi = atisegimi / 2;
+                atisegimi = atisegimi / 3;
 
                 if (atisegimi.y < 0)
                 {
