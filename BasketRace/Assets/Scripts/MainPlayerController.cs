@@ -101,6 +101,7 @@ public class MainPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Box")
         {
             int chance = Random.Range(1, 6); //Eðer floatsa max deðer inclusive, deðilse max deðerin bir altý inclusive oluyormuþ.
+            chance = 4;
 
             if(chance == 1 || chance == 2 || chance == 3)
             {

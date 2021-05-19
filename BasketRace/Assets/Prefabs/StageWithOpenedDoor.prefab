@@ -1404,7 +1404,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100010, guid: 7da46ba1a42444c44a2260d4a1c9c848, type: 3}
       propertyPath: m_Name
-      value: RainbowExplode2
+      value: BasketEffect
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 7da46ba1a42444c44a2260d4a1c9c848, type: 3}
       propertyPath: m_LocalScale.x
@@ -1591,7 +1591,7 @@ PrefabInstance:
     - target: {fileID: 7871181258069894586, guid: b6d19d9ac6449a343ae91d368342900e,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.07242095
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7871181258069894586, guid: b6d19d9ac6449a343ae91d368342900e,
         type: 3}
@@ -1608,6 +1608,12 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.6824976
       objectReference: {fileID: 0}
+    - target: {fileID: 7871181258069894586, guid: b6d19d9ac6449a343ae91d368342900e,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 72dc6385998a3784d8d83a47971a7817,
+        type: 2}
     - target: {fileID: 7871181258069894587, guid: b6d19d9ac6449a343ae91d368342900e,
         type: 3}
       propertyPath: m_Name

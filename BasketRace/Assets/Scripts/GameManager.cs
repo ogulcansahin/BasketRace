@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private float playerStartZ;
     private float enemyStartZ;
 
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
 
     private void FixedUpdate()
     {
@@ -93,6 +95,8 @@ public class GameManager : MonoBehaviour
     {
         return ballCount;
     }
+
+
 
   
     

@@ -20,6 +20,7 @@ TagManager:
   - PlayerFinish
   - EnemyFinish
   - EnemyStart
+  - MainBasketballOfPlayer
   layers:
   - Default
   - TransparentFX

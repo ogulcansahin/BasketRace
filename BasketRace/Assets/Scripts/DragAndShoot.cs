@@ -26,7 +26,7 @@ public class DragAndShoot : MonoBehaviour
         basketball_of_player = GameObject.FindWithTag("BasketballOfPlayer");
         rb = GetComponent<Rigidbody>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>(); // ScreenToWorld ve WorldToScreen kullanýlabilsin diye kamerayý çektik.
         ScreenLimitation = new Vector3((Screen.width)/4,(Screen.height)/4, (Screen.height) / 4);
         ScreenLimitationAsWorldSpace = cam.ScreenToWorldPoint(ScreenLimitation);
         
@@ -35,7 +35,6 @@ public class DragAndShoot : MonoBehaviour
 
     private void Update()
     {
-
         BallCount = gameManager.getBallCount();
 
         if (Input.touches.Length > 0 && BallCount > 0)
@@ -66,14 +65,14 @@ public class DragAndShoot : MonoBehaviour
                     forceInit.y = (ScreenLimitationAsWorldSpace).y / -3f;
                 }
 
-                if (forceInit.x > (-ScreenLimitationAsWorldSpace).x / 2f && forceInit.x > 0)
+                if (forceInit.x > (-ScreenLimitationAsWorldSpace).x && forceInit.x > 0)
                 {
-                    forceInit.x = (-ScreenLimitationAsWorldSpace).x / 2f;
+                    forceInit.x = (-ScreenLimitationAsWorldSpace).x;
                 }
 
-                if (forceInit.x < (ScreenLimitationAsWorldSpace).x / 2f && forceInit.x < 0)
+                if (forceInit.x < (ScreenLimitationAsWorldSpace).x && forceInit.x < 0)
                 {
-                    forceInit.x = (ScreenLimitationAsWorldSpace).x / 2f;
+                    forceInit.x = (ScreenLimitationAsWorldSpace).x;
                 }
 
 
@@ -86,25 +85,6 @@ public class DragAndShoot : MonoBehaviour
             if (t.phase == TouchPhase.Stationary && passingTime > 0.35f)
             {
                 forceInit = (new Vector3(forceInit.x, forceInit.y, forceInit.y));
-                if (forceInit.y > (-ScreenLimitationAsWorldSpace).y * 2f)
-                {
-                    forceInit.y = (ScreenLimitationAsWorldSpace).y * -2f;
-                }
-
-                if (forceInit.y < (-ScreenLimitationAsWorldSpace).y / 3f)
-                {
-                    forceInit.y = (ScreenLimitationAsWorldSpace).y / -3f;
-                }
-
-                if (forceInit.x > (-ScreenLimitationAsWorldSpace).x / 2f && forceInit.x > 0)
-                {
-                    forceInit.x = (-ScreenLimitationAsWorldSpace).x / 2f;
-                }
-
-                if (forceInit.x < (ScreenLimitationAsWorldSpace).x / 2f && forceInit.x < 0)
-                {
-                    forceInit.x = (ScreenLimitationAsWorldSpace).x / 2f;
-                }
 
                 if (!isShoot)
                     DrawTrajectory.Instance.UpdateTrajectory(forceInit, rb, transform.position);
@@ -126,14 +106,14 @@ public class DragAndShoot : MonoBehaviour
 
                 }
 
-                if (atisegimi.x > (-ScreenLimitationAsWorldSpace).x / 2f && atisegimi.x > 0)
+                if (atisegimi.x > (-ScreenLimitationAsWorldSpace).x && atisegimi.x > 0)
                 {
-                    atisegimi.x = (-ScreenLimitationAsWorldSpace).x / 2f;
+                    atisegimi.x = (-ScreenLimitationAsWorldSpace).x;
                 }
 
-                if (atisegimi.x < (ScreenLimitationAsWorldSpace).x / 2f && atisegimi.x < 0)
+                if (atisegimi.x < (ScreenLimitationAsWorldSpace).x && atisegimi.x < 0)
                 {
-                    atisegimi.x = (ScreenLimitationAsWorldSpace).x / 2f;
+                    atisegimi.x = (ScreenLimitationAsWorldSpace).x;
                 }
 
                 atisegimi = atisegimi / 2;
@@ -165,4 +145,5 @@ public class DragAndShoot : MonoBehaviour
         transform.parent = null;
         gameManager.updateBallCount(-1);
     }
+
 }

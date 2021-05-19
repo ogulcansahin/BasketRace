@@ -38,5 +38,5 @@ public class Spawner : MonoBehaviour
     {
         Invoke("SpawnNewObject", newSpawnDuration);
     }
-    
+
 }
