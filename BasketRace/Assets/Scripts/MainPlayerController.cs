@@ -124,6 +124,11 @@ public class MainPlayerController : MonoBehaviour
             }
 
         }
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            IsImpact = true;
+            Destroy(collision.gameObject);
+        }
     }
 
     public bool GetIsRunning()
