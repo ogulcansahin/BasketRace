@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private int ballCount=5;
@@ -27,6 +27,15 @@ public class GameManager : MonoBehaviour
     private float playerStartZ;
     private float enemyStartZ;
 
+    private Canvas TapToPlayCanvas;
+    private Canvas LevelCompletedCanvas;
+    private Canvas GameOverCanvas;
+
+    private Animator[] MainPlayerAnimator;
+    private Animator[] enemyPlayerAnimator;
+
+    private bool isGameStarted = false;
+    SetLevelToCanvas scriptOfSetLevelToCanvas;
 
     // Start is called before the first frame update
     private void Start()
@@ -42,15 +51,31 @@ public class GameManager : MonoBehaviour
         enemyStart = GameObject.FindWithTag("EnemyStart");
         enemyFinish = GameObject.FindWithTag("EnemyFinish");
 
+        TapToPlayCanvas = GameObject.FindWithTag("TapToPlayCanvas").GetComponent<Canvas>();
+        LevelCompletedCanvas = GameObject.FindWithTag("LevelCompletedCanvas").GetComponent<Canvas>();
+        GameOverCanvas = GameObject.FindWithTag("GameOverCanvas").GetComponent<Canvas>();
+
+        //Canvaslar görünmesin ilk baþta, sadece tap to play canvas ý görünsün.
+        GameOverCanvas.enabled = false;
+        LevelCompletedCanvas.enabled = false;
+        TapToPlayCanvas.enabled = true;
+
         levelLength = playerFinish.transform.position.z - playerStart.transform.position.z;
         playerStartZ = playerStart.transform.position.z;
         enemyStartZ = enemyStart.transform.position.z;
+
+        MainPlayerAnimator = GameObject.FindWithTag("MainPlayer").GetComponentsInChildren<Animator>();
+        enemyPlayerAnimator = GameObject.FindWithTag("EnemyPlayer").GetComponentsInChildren<Animator>();
 
         if (ballCount == 0) //Baþlangýçta topun yoksa karakterin elindeki basketbol topu görünmesin.
         {
             BasketballOfPlayer.SetActive(false);
 
         }
+
+        //Bölüm kazanýldýðýnda canvasta current scene kazanýldý yazar
+        scriptOfSetLevelToCanvas = GameObject.FindWithTag("LevelCompletedCanvas").GetComponentInChildren<SetLevelToCanvas>();
+        scriptOfSetLevelToCanvas.SetLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 
@@ -88,7 +113,6 @@ public class GameManager : MonoBehaviour
             scoreText.text = ballCount.ToString();
             
         }
-
     }
 
     public int getBallCount()
@@ -96,8 +120,62 @@ public class GameManager : MonoBehaviour
         return ballCount;
     }
 
+    public bool GetisGameStarted()
+    {
+        return isGameStarted;
+    }
 
+    public void SetisGameStarted(bool gameStarted)
+    {
+        isGameStarted = gameStarted;
+        if(isGameStarted == true)
+        {
+            DisableTapToPlay();
+            MainPlayerAnimator[0].SetTrigger("RunCondition");
+            MainPlayerAnimator[1].SetTrigger("StartDripling");
+            enemyPlayerAnimator[0].SetTrigger("RunCondition");
+            enemyPlayerAnimator[1].SetTrigger("StartDripling");
+        }
+    }
 
-  
-    
+    public void DisableTapToPlay()
+    {
+        TapToPlayCanvas.enabled = false;
+    }
+
+    public void GameOver()
+    {
+        enemyPlayerAnimator[0].SetTrigger("StopTrigger");
+        MainPlayerAnimator[0].SetTrigger("StopTrigger");
+        enemyPlayerAnimator[1].SetTrigger("StopDripling");
+        MainPlayerAnimator[1].SetTrigger("StopDripling");
+        MainPlayerAnimator[0].SetBool("Stop", true);
+        enemyPlayerAnimator[0].SetBool("Stop", true);
+        GameOverCanvas.enabled = true;
+        isGameStarted = false;
+    }
+
+    public void GoNextLevel()
+    {
+        enemyPlayerAnimator[0].SetTrigger("StopTrigger");
+        MainPlayerAnimator[0].SetTrigger("FinishCondition");
+        enemyPlayerAnimator[1].SetTrigger("StopDripling");
+        MainPlayerAnimator[1].SetTrigger("StopDripling");
+        MainPlayerAnimator[0].SetBool("Stop", true);
+        enemyPlayerAnimator[0].SetBool("Stop", true);
+        LevelCompletedCanvas.enabled = true;
+        BasketballOfPlayer.SetActive(false);
+        isGameStarted = false;
+        
+    }
+
+    public void loadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void loadCurrentScene()
+    {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
