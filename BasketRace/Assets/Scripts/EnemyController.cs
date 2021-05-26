@@ -140,6 +140,12 @@ public class EnemyController : MonoBehaviour
             IsImpact = true;
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == "BasketballOfPlayer")
+        {
+            IsImpact = true;
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
