@@ -4038,7 +4038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1160197990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5601,7 +5601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1548396336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6482,7 +6482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1801214816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7968,6 +7968,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3960296467111096182, guid: 84fc1ecfd699a4e44b5fd8a7506d386c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3990416596978887355, guid: 84fc1ecfd699a4e44b5fd8a7506d386c,
         type: 3}
       propertyPath: _lineRenderer
@@ -8033,7 +8038,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3960296467111096182, guid: 84fc1ecfd699a4e44b5fd8a7506d386c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 84fc1ecfd699a4e44b5fd8a7506d386c, type: 3}
 --- !u!1001 &5571291474734458676
 PrefabInstance:
