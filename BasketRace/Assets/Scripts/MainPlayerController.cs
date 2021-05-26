@@ -20,6 +20,7 @@ public class MainPlayerController : MonoBehaviour
     private Animator [] MainPlayerAnimator;
     private int dieCondition = 0; // Die condition sürekli triggerlanmasýn diye.
     private ParticleSystem [] powerUpRunParticle;
+    float speed = .5f;
 
     void Start()
     {
@@ -61,7 +62,7 @@ public class MainPlayerController : MonoBehaviour
     }
     private void run()
         {
-            transform.Translate(transform.forward * Time.deltaTime * 0.5f);
+            transform.Translate(transform.forward * Time.deltaTime * speed);
         }
 
     private void ChangeLine()
@@ -97,6 +98,22 @@ public class MainPlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Fastener")
+        {
+            speed = 1.0f;
+            MainPlayerAnimator[1].SetFloat("DriplingSpeed", 1.7f);
+        }
+
+        else if (collision.gameObject.tag == "Slower")
+        {
+            speed = .25f;
+        }
+
+        else if (collision.gameObject.tag == "MainPlayerFloor")
+        {
+            speed = .5f;
+            MainPlayerAnimator[1].SetFloat("DriplingSpeed", 1.5f);
+        }
         if (collision.gameObject.tag == "Basketball_Skill")
         {
             gameManager.updateBallCount(1);
