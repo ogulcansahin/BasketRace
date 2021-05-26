@@ -144,7 +144,6 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "BasketballOfPlayer")
         {
             IsImpact = true;
-            Destroy(collision.gameObject);
         }
     }
 

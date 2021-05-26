@@ -125,6 +125,24 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
         //Sorun tek topun  varken basket atsan dahi game over olman. 
 
     }
-   
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.tag == "MainPlayer")
+        {
+            PlayerAnimations[0].ResetTrigger("StopTrigger");
+            PlayerAnimations[0].SetBool("Stop", false);
+            PlayerAnimations[0].SetTrigger("RunCondition"); //MainPlayerdaki koþma animasyonunu baþlatýr.
+            if (numberOfBall != 0)              //topum varsa
+            {
+                PlayerAnimations[1].SetTrigger("StartDripling"); //MainPlayerdaki top sektirme animasyonunu baþlatýr. 
+            }
+
+            isRunning = true;
+            mainPlayerController.SetIsRunning(isRunning);
+        }
+        
+    }
+
 
 }

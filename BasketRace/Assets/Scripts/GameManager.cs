@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
 
     private Animator[] MainPlayerAnimator;
     private Animator[] enemyPlayerAnimator;
+    private MainPlayerController mainPlayerScript;
+    private EnemyController enemyPlayerScript;
+    private DragAndShoot basketscript;
 
     private bool isGameStarted = false;
     SetLevelToCanvas scriptOfSetLevelToCanvas;
@@ -50,6 +53,9 @@ public class GameManager : MonoBehaviour
         playerFinish = GameObject.FindWithTag("PlayerFinish");
         enemyStart = GameObject.FindWithTag("EnemyStart");
         enemyFinish = GameObject.FindWithTag("EnemyFinish");
+        mainPlayerScript = mainPlayer.GetComponent<MainPlayerController>();
+        enemyPlayerScript = enemyPlayer.GetComponent<EnemyController>();
+        basketscript = GameObject.FindWithTag("BasketballOfPlayer").GetComponent<DragAndShoot>();
 
         TapToPlayCanvas = GameObject.FindWithTag("TapToPlayCanvas").GetComponent<Canvas>();
         LevelCompletedCanvas = GameObject.FindWithTag("LevelCompletedCanvas").GetComponent<Canvas>();
@@ -76,6 +82,8 @@ public class GameManager : MonoBehaviour
         //Bölüm kazanýldýðýnda canvasta current scene kazanýldý yazar
         scriptOfSetLevelToCanvas = GameObject.FindWithTag("LevelCompletedCanvas").GetComponentInChildren<SetLevelToCanvas>();
         scriptOfSetLevelToCanvas.SetLevel(SceneManager.GetActiveScene().buildIndex + 1);
+
+        Time.timeScale = 1;
     }
 
 
@@ -145,12 +153,16 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        enemyPlayerAnimator[0].SetTrigger("StopTrigger");
-        MainPlayerAnimator[0].SetTrigger("StopTrigger");
-        enemyPlayerAnimator[1].SetTrigger("StopDripling");
-        MainPlayerAnimator[1].SetTrigger("StopDripling");
-        MainPlayerAnimator[0].SetBool("Stop", true);
-        enemyPlayerAnimator[0].SetBool("Stop", true);
+        //enemyPlayerAnimator[0].SetTrigger("StopTrigger");
+        //MainPlayerAnimator[0].SetTrigger("StopTrigger");
+        //enemyPlayerAnimator[1].SetTrigger("StopDripling");
+        //MainPlayerAnimator[1].SetTrigger("StopDripling");
+        //MainPlayerAnimator[0].SetBool("Stop", true);
+        //enemyPlayerAnimator[0].SetBool("Stop", true);
+        //mainPlayerScript.enabled = false;
+        //enemyPlayerScript.enabled = false;
+        //basketscript.enabled = false;
+        Time.timeScale = 0;
         GameOverCanvas.enabled = true;
         isGameStarted = false;
     }
@@ -166,7 +178,6 @@ public class GameManager : MonoBehaviour
         LevelCompletedCanvas.enabled = true;
         BasketballOfPlayer.SetActive(false);
         isGameStarted = false;
-        
     }
 
     public void loadNextScene()
@@ -175,7 +186,6 @@ public class GameManager : MonoBehaviour
     }
     public void loadCurrentScene()
     {
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
