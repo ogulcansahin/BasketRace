@@ -72,9 +72,7 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
                 PlayerAnimations[0].SetTrigger("StopTrigger");
                 while (collision.transform.position.z - enteringPosition.z >= 0.2f)
                 {
-                    Debug.Log("EnteringPosition" + enteringPosition.z);
-                    Debug.Log("Transform" + collision.transform.position.z);
-                    Debug.Log("Fark" + (collision.transform.position.z - enteringPosition.z));
+
                     isRunning = false;
                     mainPlayerController.SetIsRunning(isRunning);
                     PlayerAnimations[0].SetTrigger("DieCondition");
@@ -100,12 +98,9 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
             yield return new WaitForSeconds(1);
             if(doorstatus.actualDoorStatus == false)
             {
-                Debug.Log("GameOver");
-                PlayerAnimations[0].SetTrigger("Stop");
+                gameManager.GameOver();
                 isRunning = false;
                 mainPlayerController.SetIsRunning(isRunning);
-                PlayerAnimations[0].SetBool("Stop", true);
-                PlayerAnimations[0].ResetTrigger("RunCondition");
             }
              
             

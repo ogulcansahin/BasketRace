@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8574839886122795931}
   - component: {fileID: 8574839886122795930}
   - component: {fileID: 8574839886122795929}
+  - component: {fileID: 1737271835}
   m_Layer: 0
   m_Name: StartLineForPlayer
-  m_TagString: Untagged
+  m_TagString: PlayerFinish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1737271835
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574839886122795911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2.220446e-16, z: 5.5507326}
+  m_Center: {x: 0, y: 0, z: 10.36}

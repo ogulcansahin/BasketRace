@@ -39,20 +39,24 @@ public class MainPlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (IsRunning && IsPowerUpRun != true && !IsImpact)
+        if(gameManager.GetisGameStarted() == true)
         {
-            run();
-        }
+            if (IsRunning && IsPowerUpRun != true && !IsImpact)
+            {
+                run();
+            }
 
-        if (IsPowerUpRun && !IsImpact)
-        {
-            StartCoroutine(PowerUpRun());
-        }
+            if (IsPowerUpRun && !IsImpact)
+            {
+                StartCoroutine(PowerUpRun());
+            }
 
-        if (IsImpact)
-        {
-            StartCoroutine(Impact());
+            if (IsImpact)
+            {
+                StartCoroutine(Impact());
+            }
         }
+        
 
     }
     private void run()
@@ -101,7 +105,6 @@ public class MainPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Box")
         {
             int chance = Random.Range(1, 6); //Eðer floatsa max deðer inclusive, deðilse max deðerin bir altý inclusive oluyormuþ.
-            chance = 4;
 
             if(chance == 1 || chance == 2 || chance == 3)
             {
@@ -131,6 +134,14 @@ public class MainPlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerFinish")
+        {
+            gameManager.GoNextLevel();
+        }
+    }
+
     public bool GetIsRunning()
     {
         return IsRunning;
@@ -145,6 +156,12 @@ public class MainPlayerController : MonoBehaviour
     {
         if (Input.touches.Length > 0)
         {
+            if(gameManager.GetisGameStarted() == false)
+            {
+                gameManager.SetisGameStarted(true); 
+            }
+            
+
             Touch t = Input.GetTouch(0);
             if (t.phase == TouchPhase.Began)
             {
