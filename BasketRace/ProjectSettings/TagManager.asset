@@ -21,6 +21,11 @@ TagManager:
   - EnemyFinish
   - EnemyStart
   - MainBasketballOfPlayer
+  - TapToPlayCanvas
+  - LevelCompletedCanvas
+  - GameOverCanvas
+  - Obstacle
+  - Fastener
   layers:
   - Default
   - TransparentFX
