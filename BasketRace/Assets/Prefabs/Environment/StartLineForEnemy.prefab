@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5849465781639490656}
   - component: {fileID: 5849465781639490657}
   - component: {fileID: 1251572205}
+  - component: {fileID: 1218623308}
   m_Layer: 0
   m_Name: StartLineForEnemy
   m_TagString: EnemyFinish
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1251572205
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849465781639490659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2.220446e-16, z: 5.5507326}
+  m_Center: {x: 0, y: 0, z: 10.44}
+--- !u!65 &1218623308
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
