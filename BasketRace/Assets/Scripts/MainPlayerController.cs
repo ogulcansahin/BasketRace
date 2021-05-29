@@ -11,6 +11,7 @@ public class MainPlayerController : MonoBehaviour
     bool IsPowerUpRun = false;
     bool isRight = true;
     bool IsImpact = false;
+    public bool levelIsFinished = false;
     private GameManager gameManager;
     Vector2 firstPressPos;
     Vector2 secondPressPos;
@@ -155,7 +156,8 @@ public class MainPlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerFinish")
         {
-            gameManager.GoNextLevel();
+            levelIsFinished = true;
+            gameManager.LevelFinished();
         }
     }
 
@@ -173,7 +175,7 @@ public class MainPlayerController : MonoBehaviour
     {
         if (Input.touches.Length > 0)
         {
-            if(gameManager.GetisGameStarted() == false)
+            if(gameManager.GetisGameStarted() == false && levelIsFinished == false)
             {
                 gameManager.SetisGameStarted(true); 
             }
@@ -228,7 +230,7 @@ public class MainPlayerController : MonoBehaviour
         {
             powerUpRunParticle[0].Play();
         }
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1f);
         powerUpRunParticle[0].Stop();
         gameObject.GetComponent<BoxCollider>().enabled = true;
         IsPowerUpRun = false;

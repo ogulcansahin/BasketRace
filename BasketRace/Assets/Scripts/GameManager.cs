@@ -6,12 +6,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    private int ballCount=5;
+    private int ballCount = 5;
+    public int score = 100;
 
     public Image playerIndicator;
     public Slider playerProgressBar;
     public Slider enemyProgressBar;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI totalScoreText;
+    public TextMeshProUGUI levelText;
 
     private GameObject BasketballOfPlayer;
     private GameObject playerStart;
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
     private MainPlayerController mainPlayerScript;
     private EnemyController enemyPlayerScript;
     private DragAndShoot basketscript;
+    private MultiplierBasket multiplierBasket;
 
     private bool isGameStarted = false;
     SetLevelToCanvas scriptOfSetLevelToCanvas;
@@ -153,31 +157,28 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //enemyPlayerAnimator[0].SetTrigger("StopTrigger");
-        //MainPlayerAnimator[0].SetTrigger("StopTrigger");
-        //enemyPlayerAnimator[1].SetTrigger("StopDripling");
-        //MainPlayerAnimator[1].SetTrigger("StopDripling");
-        //MainPlayerAnimator[0].SetBool("Stop", true);
-        //enemyPlayerAnimator[0].SetBool("Stop", true);
-        //mainPlayerScript.enabled = false;
-        //enemyPlayerScript.enabled = false;
-        //basketscript.enabled = false;
         Time.timeScale = 0;
         GameOverCanvas.enabled = true;
         isGameStarted = false;
     }
 
-    public void GoNextLevel()
+    public void LevelFinished()
     {
         enemyPlayerAnimator[0].SetTrigger("StopTrigger");
-        MainPlayerAnimator[0].SetTrigger("FinishCondition");
         enemyPlayerAnimator[1].SetTrigger("StopDripling");
         MainPlayerAnimator[1].SetTrigger("StopDripling");
         MainPlayerAnimator[0].SetBool("Stop", true);
         enemyPlayerAnimator[0].SetBool("Stop", true);
+        isGameStarted = false;
+    }
+
+    public void LevelCompleted()
+    {
+        MainPlayerAnimator[0].SetTrigger("FinishCondition");
         LevelCompletedCanvas.enabled = true;
         BasketballOfPlayer.SetActive(false);
-        isGameStarted = false;
+        totalScoreText.text = "TOTAL SCORE: " + score;
+        levelText.text = "LEVEL " + (SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void loadNextScene()
@@ -188,4 +189,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
 }

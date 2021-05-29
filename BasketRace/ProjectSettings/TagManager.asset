@@ -21,6 +21,15 @@ TagManager:
   - EnemyFinish
   - EnemyStart
   - MainBasketballOfPlayer
+  - Slower
+  - Fastener
+  - TapToPlayCanvas
+  - LevelCompletedCanvas
+  - GameOverCanvas
+  - Obstacle
+  - Multiplier_3
+  - Multiplier_2
+  - Multiplier_5
   layers:
   - Default
   - TransparentFX
