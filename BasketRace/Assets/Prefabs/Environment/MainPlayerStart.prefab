@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 1737271835}
   m_Layer: 0
   m_Name: StartLineForPlayer
-  m_TagString: PlayerFinish
+  m_TagString: PlayerStart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8574839886122795931
 Transform:

@@ -365,25 +365,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9999999, y: 80.71637, z: 20.651884}
   m_Center: {x: 0.000032605258, y: 51.67871, z: 8.858198}
---- !u!95 &1306710098
-Animator:
-  serializedVersion: 3
+--- !u!65 &416982260
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3933017136813331728}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.999999, y: 0.0000000011641534, z: 10}
+  m_Center: {x: 0, y: -0.00000011920929, z: 0}
 --- !u!114 &1306710099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +390,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45f13b3b817f2e4e8cc3ef5c3fecfeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6247193869284144073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3933017136855437761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.999999, y: 0.0000000011641534, z: 10}
+  m_Center: {x: 0, y: -0.00000011920929, z: 0}
 --- !u!114 &1811121552
 MonoBehaviour:
   m_ObjectHideFlags: 0

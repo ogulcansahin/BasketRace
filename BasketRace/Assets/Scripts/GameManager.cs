@@ -7,20 +7,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private int ballCount = 5;
-    public int score = 100;
+    public int score = 0;
 
     public Image playerIndicator;
     public Slider playerProgressBar;
     public Slider enemyProgressBar;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI totalScoreText;
-    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI coinText;
 
     private GameObject BasketballOfPlayer;
     private GameObject playerStart;
     private GameObject playerFinish;
     private GameObject enemyStart;
     private GameObject enemyFinish;
+    private ParticleSystem[] finishEffects;
 
     private GameObject mainPlayer;
     private GameObject enemyPlayer;
@@ -40,16 +40,21 @@ public class GameManager : MonoBehaviour
     private EnemyController enemyPlayerScript;
     private DragAndShoot basketscript;
     private MultiplierBasket multiplierBasket;
+    private GameObject multipliers;
 
     private bool isGameStarted = false;
     SetLevelToCanvas scriptOfSetLevelToCanvas;
+    SetCoinLevelCompleted scriptSetCoin;
+    private bool isFinishEffectStarted = false;
+    int numberOfCoin = 0;
 
     // Start is called before the first frame update
     private void Start()
     {
   
         scoreText.text = ballCount.ToString();
-
+        coinText.text = (ballCount*100).ToString();
+        numberOfCoin = ballCount * 100;
         BasketballOfPlayer = GameObject.FindWithTag("BasketballOfPlayer");
         mainPlayer = GameObject.FindWithTag("MainPlayer");
         enemyPlayer = GameObject.FindWithTag("EnemyPlayer");
@@ -60,6 +65,9 @@ public class GameManager : MonoBehaviour
         mainPlayerScript = mainPlayer.GetComponent<MainPlayerController>();
         enemyPlayerScript = enemyPlayer.GetComponent<EnemyController>();
         basketscript = GameObject.FindWithTag("BasketballOfPlayer").GetComponent<DragAndShoot>();
+        multipliers = GameObject.FindWithTag("Multiplier");
+        multipliers.SetActive(false);
+        finishEffects = playerFinish.GetComponentsInChildren<ParticleSystem>();
 
         TapToPlayCanvas = GameObject.FindWithTag("TapToPlayCanvas").GetComponent<Canvas>();
         LevelCompletedCanvas = GameObject.FindWithTag("LevelCompletedCanvas").GetComponent<Canvas>();
@@ -85,7 +93,9 @@ public class GameManager : MonoBehaviour
 
         //Bölüm kazanýldýðýnda canvasta current scene kazanýldý yazar
         scriptOfSetLevelToCanvas = GameObject.FindWithTag("LevelCompletedCanvas").GetComponentInChildren<SetLevelToCanvas>();
-        scriptOfSetLevelToCanvas.SetLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        scriptSetCoin = GameObject.FindWithTag("LevelCompletedCanvas").GetComponentInChildren<SetCoinLevelCompleted>();
+
+
 
         Time.timeScale = 1;
     }
@@ -115,6 +125,7 @@ public class GameManager : MonoBehaviour
 
         else
         {
+            
             if (!BasketballOfPlayer.activeSelf)
             {
                 
@@ -123,6 +134,16 @@ public class GameManager : MonoBehaviour
             }
 
             scoreText.text = ballCount.ToString();
+            if (isGameStarted)
+            {
+                if(numberOfCoin< ballCount * 100)
+                {
+                    numberOfCoin = ballCount * 100;
+                }
+                
+                coinText.text = numberOfCoin.ToString();
+            }
+                
             
         }
     }
@@ -164,6 +185,14 @@ public class GameManager : MonoBehaviour
 
     public void LevelFinished()
     {
+        if(isFinishEffectStarted == false)
+        {
+            finishEffects[0].Play();
+            finishEffects[1].Play();
+            isFinishEffectStarted = true;
+        }
+
+        multipliers.SetActive(true);
         enemyPlayerAnimator[0].SetTrigger("StopTrigger");
         enemyPlayerAnimator[1].SetTrigger("StopDripling");
         MainPlayerAnimator[1].SetTrigger("StopDripling");
@@ -177,8 +206,13 @@ public class GameManager : MonoBehaviour
         MainPlayerAnimator[0].SetTrigger("FinishCondition");
         LevelCompletedCanvas.enabled = true;
         BasketballOfPlayer.SetActive(false);
-        totalScoreText.text = "TOTAL SCORE: " + score;
-        levelText.text = "LEVEL " + (SceneManager.GetActiveScene().buildIndex + 1);
+        if(getBallCount() == 0)
+        {
+            score = numberOfCoin;
+        }
+        
+        scriptSetCoin.SetCoin(score);
+        scriptOfSetLevelToCanvas.SetLevel(SceneManager.GetActiveScene().buildIndex+1);
     }
 
     public void loadNextScene()
@@ -189,5 +223,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public int GetNumberOfCoin() {
+
+        return numberOfCoin;
+
+    }
+   
 
 }

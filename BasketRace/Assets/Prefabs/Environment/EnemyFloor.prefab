@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 7181624625342830469}
   - component: {fileID: 7181624625342830468}
   m_Layer: 0
-  m_Name: EnemyFloor 1
+  m_Name: EnemyFloor
   m_TagString: EnemyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7181624625342830467
 Transform:

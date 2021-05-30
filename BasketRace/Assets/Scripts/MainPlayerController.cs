@@ -31,7 +31,7 @@ public class MainPlayerController : MonoBehaviour
         road_x = (road.transform.position - (road.transform.localScale * 0.215f)).x;
         MainPlayerAnimator = gameObject.GetComponentsInChildren<Animator>();
         powerUpRunParticle = gameObject.GetComponentsInChildren<ParticleSystem>();
-        
+
     }
     private void Update()
     {
@@ -99,22 +99,7 @@ public class MainPlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Fastener")
-        {
-            speed = 1.0f;
-            MainPlayerAnimator[1].SetFloat("DriplingSpeed", 1.7f);
-        }
 
-        else if (collision.gameObject.tag == "Slower")
-        {
-            speed = .25f;
-        }
-
-        else if (collision.gameObject.tag == "MainPlayerFloor")
-        {
-            speed = .5f;
-            MainPlayerAnimator[1].SetFloat("DriplingSpeed", 1.5f);
-        }
         if (collision.gameObject.tag == "Basketball_Skill")
         {
             gameManager.updateBallCount(1);
@@ -152,12 +137,32 @@ public class MainPlayerController : MonoBehaviour
         }
     }
 
+
+
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Fastener")
+        {
+            speed = 1.0f;
+            
+        }
+
+        else if (other.gameObject.tag == "Slower")
+        {
+            speed = .25f;
+        }
         if (other.gameObject.tag == "PlayerFinish")
         {
             levelIsFinished = true;
             gameManager.LevelFinished();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Fastener") || other.gameObject.CompareTag("Slower"))
+        {
+            speed = .5f;
         }
     }
 

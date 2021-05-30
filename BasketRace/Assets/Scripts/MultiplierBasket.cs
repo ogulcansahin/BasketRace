@@ -28,15 +28,15 @@ public class MultiplierBasket : MonoBehaviour
         multiplierIsOver = true;
         if(gameObject.tag == "Multiplier_2")
         {
-            gameManager.score *= (gameManager.getBallCount() + 1) * 2;
+            gameManager.score = (gameManager.GetNumberOfCoin()) * 2;
         }
         else if (gameObject.tag == "Multiplier_3")
         {
-            gameManager.score *= (gameManager.getBallCount() + 1) * 3;
+            gameManager.score = (gameManager.GetNumberOfCoin()) * 3;
         }
         else if (gameObject.tag == "Multiplier_5")
         {
-            gameManager.score *= (gameManager.getBallCount() + 1) * 5;
+            gameManager.score = (gameManager.GetNumberOfCoin()) * 5;
         }
 
         gameManager.LevelCompleted();

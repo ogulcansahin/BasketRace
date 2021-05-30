@@ -7,15 +7,13 @@ using TMPro;
 public class SetLevelToCanvas : MonoBehaviour
 {
     private string currentScene;
-    private TextMeshProUGUI levelText;
     private int currentLevel;
-    // Start is called before the first frame update
-    void Start()
+    TextMeshProUGUI levelText;
+
+    private void Start()
     {
         levelText = gameObject.GetComponent<TextMeshProUGUI>();
     }
-
-    // Update is called once per frame
 
     public void SetLevel(int level)
     {

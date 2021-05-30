@@ -30,6 +30,7 @@ TagManager:
   - Multiplier_3
   - Multiplier_2
   - Multiplier_5
+  - Multiplier
   layers:
   - Default
   - TransparentFX

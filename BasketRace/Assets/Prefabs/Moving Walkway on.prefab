@@ -85,7 +85,8 @@ PrefabInstance:
     - target: {fileID: 5480917693652064834, guid: 919d921c43a46454fb08600a72d8d21b,
         type: 3}
       propertyPath: m_Name
-      value: hoop (2)
+      value: Moving Walkway on
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1306710098, guid: 919d921c43a46454fb08600a72d8d21b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 919d921c43a46454fb08600a72d8d21b, type: 3}
