@@ -7,13 +7,15 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
     //Startdooranim kapý prefablarýnda yer alýyor. 
     //Ýçerisinde sol kapý ve sað kapýnýn animasyon dosyalarý ve kapýnýn açýk veya kapalý olup olmadýðý bilgisi yer alýyor. Bunu yakaladýk çünkü player kapý kapalýysa
     //kapýnýn önünde açýlana dek beklemeli açýksa devam etmeli. 
-    startdooranim doorstatus; 
+    startdooranim doorstatus;
 
     Animator[] PlayerAnimations; //Karakterin top sektirme ve koþma animasyonlarý alýndý. Array olarak yaratýldý çünkü iki animasyon dosyasý var.
+
 
     //Mainplayerýn alýnmasýnýn sebebi: Karakterin pozisyonunun ileri doðru deðiþimi main playerdan kontrol ediliyor.
     //Burada mainplayer çekilerek kapý kapalýyken durmasý kapý açýldýðýnda hareket etmesi saðlanýr.
     MainPlayerController mainPlayerController;
+    
 
     //GameManager scriptinde top sayýsý yer alýyor. Eðer kapý kapalý ve kapýnýn önüne gelindiðinde top sayýsý sýfýrsa game over olmasý lazým.
     //Bu ayarýn kontrolü için gameManager alýndý. 
@@ -24,12 +26,19 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
     bool isRunning; //Mainplayerdaki hareket durumunu burada bir bool deðiþkene atamak için oluþturduk.
     int numberOfBall; //GameManagerdaki top sayýsýný burada bir deðere atamak için kullandýk. 
 
+    //karakter kapýnýn önünde kapý açýkken geçiyor, tekrar potaya basket atýlýrsa shootdistance ýn baþýnda durmalý. Bu sebeple bool deðer
+    //oluþturduk.
+    bool isEnteredMainPlayer = true;
+
+    private AudioSource[] sounds;
+
     private ParticleSystem[] impactParticle;
     void Start()
     {
         doorstatus = GetComponentInParent<startdooranim>(); //Kapýnýn açýk olup olmadýðýyla ilgili script çekildi.
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>(); //Top sayýsýný yönetmek için gameManager scripti çekildi.
         impactParticle = GameObject.FindWithTag("MainPlayer").GetComponentsInChildren<ParticleSystem>();
+        sounds = GameObject.FindWithTag("MainPlayer").GetComponentsInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,7 +49,12 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
         {
             mainPlayerController = collision.gameObject.GetComponent<MainPlayerController>(); //Topun kalmadýysa reklam alaný geldiðinde arkada sürekli koþmaya devam etmesin dursun.
             PlayerAnimations = collision.gameObject.GetComponentsInChildren<Animator>();
-            enteringPosition = collision.gameObject.transform.position;
+            if (isEnteredMainPlayer)
+            {
+                enteringPosition = new Vector3(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y, collision.gameObject.transform.position.z +0.01f);
+                isEnteredMainPlayer = false;
+            }
+            
 
         }
         
@@ -70,24 +84,19 @@ public class StopFrontOfTheClosedDoor : MonoBehaviour
             if (collision.transform.position.z - enteringPosition.z > 0.5)
             {
                 PlayerAnimations[0].SetTrigger("StopTrigger");
-                while (collision.transform.position.z - enteringPosition.z >= 0.2f)
-                {
 
-                    isRunning = false;
-                    mainPlayerController.SetIsRunning(isRunning);
-                    PlayerAnimations[0].SetTrigger("DieCondition");
+                PlayerAnimations[0].SetTrigger("DieCondition");
                     
-                    if (!impactParticle[1].isPlaying)
-                    {
-                        impactParticle[1].Play();
-                    }
-                    yield return new WaitForSeconds(0.01f);
-                    impactParticle[1].Stop();
-                    collision.transform.Translate(collision.transform.forward * -0.5f * Time.deltaTime);
+                if (!impactParticle[1].isPlaying)
+                {
+                    sounds[1].Play();
+                    impactParticle[1].Play();
                 }
+                
             }
-            
-            
+            //collision.transform.position = Vector3.Lerp(collision.transform.position, new Vector3(collision.transform.position.x, enteringPosition.y, enteringPosition.z), Mathf.PingPong(Time.time * 0.5f, 1.0f));
+            collision.transform.position = new Vector3(collision.transform.position.x, enteringPosition.y, enteringPosition.z);
+
             PlayerAnimations[0].ResetTrigger("DieCondition");
         }
 

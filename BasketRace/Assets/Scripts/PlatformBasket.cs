@@ -7,10 +7,12 @@ public class PlatformBasket : MonoBehaviour
     ParticleSystem basketEffect;
     GameObject slower;
     GameObject fastener;
+    private AudioSource sound;
 
     // Start is called before the first frame update
     void Start()
     {
+        sound = gameObject.GetComponent<AudioSource>();
         basketEffect = gameObject.GetComponentInChildren<ParticleSystem>();
         slower = transform.GetChild(0).gameObject;
         fastener = transform.GetChild(1).gameObject;
@@ -23,8 +25,13 @@ public class PlatformBasket : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "BasketballOfPlayer")
+        if(other.tag == "BasketballOfPlayer" || other.tag == "BasketballOfEnemyPlayer")
         {
+
+            if (sound != null && other.tag =="BasketballOfPlayer")
+            {
+                sound.Play();
+            }
             basketEffect.Play();
             if (fastener.activeSelf)
             {

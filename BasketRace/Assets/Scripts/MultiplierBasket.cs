@@ -8,12 +8,14 @@ public class MultiplierBasket : MonoBehaviour
     private GameManager gameManager;
     private MainPlayerController mainPlayerController;
     public bool multiplierIsOver = false;
+    private AudioSource sound;
     // Start is called before the first frame update
     void Start()
     {
         basketEffect = gameObject.GetComponentInChildren<ParticleSystem>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         mainPlayerController = GameObject.FindWithTag("MainPlayer").GetComponent<MainPlayerController>();
+        sound = gameObject.GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -23,7 +25,8 @@ public class MultiplierBasket : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other)
-    {   
+    {
+        sound.Play();
         basketEffect.Play();
         multiplierIsOver = true;
         if(gameObject.tag == "Multiplier_2")

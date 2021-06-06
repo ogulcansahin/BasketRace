@@ -408,13 +408,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035045483757072}
-  m_LocalRotation: {x: 0.60313314, y: -0.688607, z: -0.36909404, w: 0.16068746}
-  m_LocalPosition: {x: 0.1624, y: 0.068, z: -0.2236}
+  m_LocalRotation: {x: 0.51683336, y: -0.7020713, z: -0.48983938, w: 0.0060424195}
+  m_LocalPosition: {x: 0.1677, y: 0.0546, z: -0.2327}
   m_LocalScale: {x: 0.001407718, y: 0.000594891, z: 0.0015981318}
   m_Children: []
   m_Father: {fileID: 4228035046787503181}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -18.33, y: -135.4, z: -90}
+  m_LocalEulerAnglesHint: {x: -42.966, y: -135.289, z: -91.106}
 --- !u!54 &4228035045483757085
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -516,6 +516,8 @@ GameObject:
   - component: {fileID: 4228035045499876463}
   - component: {fileID: 4228035045499876457}
   - component: {fileID: 4228035045499876462}
+  - component: {fileID: 3670752336513553225}
+  - component: {fileID: 1782728410696835651}
   m_Layer: 0
   m_Name: kalin_cember
   m_TagString: Untagged
@@ -586,6 +588,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3670752336513553225
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228035045499876460}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!64 &1782728410696835651
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228035045499876460}
+  m_Material: {fileID: 13400000, guid: 94e94248738ff4142891924351599e54, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6220623956004709180, guid: 8ecaee9f463b67c4ba157cf3da7fdbfa, type: 3}
 --- !u!1 &4228035045517920534
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,13 +1004,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035045715624498}
-  m_LocalRotation: {x: 0.20129155, y: -0.40425542, z: -0.67785054, w: 0.58015335}
-  m_LocalPosition: {x: 0.0303, y: 0.088700056, z: -0.1559}
+  m_LocalRotation: {x: 0.0015223024, y: -0.54937893, z: -0.6966744, w: 0.46132988}
+  m_LocalPosition: {x: 0.0558, y: 0.0944, z: -0.1472}
   m_LocalScale: {x: 0.001407718, y: 0.000594891, z: 0.0015981318}
   m_Children: []
   m_Father: {fileID: 4228035046555436435}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -18.33, y: -51.408, z: -90}
+  m_LocalEulerAnglesHint: {x: -49.824, y: -52.093, z: -87.398}
 --- !u!54 &4228035045715624511
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -987,7 +1019,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035045715624498}
   serializedVersion: 2
-  m_Mass: 15
+  m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 0
@@ -1114,13 +1146,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035045735568519}
-  m_LocalRotation: {x: 0.20129155, y: -0.40425542, z: -0.67785054, w: 0.58015335}
-  m_LocalPosition: {x: 0.0303, y: 0.088700056, z: -0.1559}
+  m_LocalRotation: {x: 0.0015223024, y: -0.54937893, z: -0.6966744, w: 0.46132988}
+  m_LocalPosition: {x: 0.0558, y: 0.0944, z: -0.1472}
   m_LocalScale: {x: 0.001407718, y: 0.000594891, z: 0.0015981318}
   m_Children: []
   m_Father: {fileID: 4228035046787503181}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -18.33, y: -51.408, z: -90}
+  m_LocalEulerAnglesHint: {x: -49.824, y: -52.093, z: -87.398}
 --- !u!54 &4228035045735568512
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1376,13 +1408,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035045789923693}
-  m_LocalRotation: {x: 0.20129155, y: -0.40425542, z: -0.67785054, w: 0.58015335}
-  m_LocalPosition: {x: 0.0303, y: 0.088700056, z: -0.1559}
+  m_LocalRotation: {x: 0.0015223024, y: -0.54937893, z: -0.6966744, w: 0.46132988}
+  m_LocalPosition: {x: 0.0558, y: 0.0944, z: -0.1472}
   m_LocalScale: {x: 0.001407718, y: 0.000594891, z: 0.0015981318}
   m_Children: []
   m_Father: {fileID: 4228035045517920529}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -18.33, y: -51.408, z: -90}
+  m_LocalEulerAnglesHint: {x: -49.824, y: -52.093, z: -87.398}
 --- !u!54 &4228035045789923694
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1714,7 +1746,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035046025248239}
   serializedVersion: 2
-  m_Mass: 15
+  m_Mass: 0.5
   m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 0
@@ -12435,13 +12467,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035047016543155}
-  m_LocalRotation: {x: 0.60313314, y: -0.688607, z: -0.36909404, w: 0.16068746}
-  m_LocalPosition: {x: 0.1624, y: 0.068, z: -0.2236}
+  m_LocalRotation: {x: 0.51683336, y: -0.7020713, z: -0.48983938, w: 0.0060424195}
+  m_LocalPosition: {x: 0.1677, y: 0.0546, z: -0.2327}
   m_LocalScale: {x: 0.001407718, y: 0.000594891, z: 0.0015981318}
   m_Children: []
   m_Father: {fileID: 4228035046555436435}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -18.33, y: -135.4, z: -90}
+  m_LocalEulerAnglesHint: {x: -42.966, y: -135.289, z: -91.106}
 --- !u!54 &4228035047016543164
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12450,7 +12482,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035047016543155}
   serializedVersion: 2
-  m_Mass: 15
+  m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 0
@@ -12775,7 +12807,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035047126842151}
   serializedVersion: 2
-  m_Mass: 15
+  m_Mass: 0.5
   m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 0
@@ -13020,6 +13052,8 @@ GameObject:
   - component: {fileID: 4228035047278514874}
   - component: {fileID: 4228035047278514884}
   - component: {fileID: 4228035047278514885}
+  - component: {fileID: 422211578059873912}
+  - component: {fileID: 4082346292426170969}
   m_Layer: 0
   m_Name: kalin_cember
   m_TagString: Untagged
@@ -13090,6 +13124,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &422211578059873912
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228035047278514875}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!64 &4082346292426170969
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228035047278514875}
+  m_Material: {fileID: 13400000, guid: 94e94248738ff4142891924351599e54, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6220623956004709180, guid: 8ecaee9f463b67c4ba157cf3da7fdbfa, type: 3}
 --- !u!1 &4228035047308957587
 GameObject:
   m_ObjectHideFlags: 0
@@ -13258,13 +13322,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4228035047333497251}
-  m_LocalRotation: {x: 0.60313314, y: -0.688607, z: -0.36909404, w: 0.16068746}
-  m_LocalPosition: {x: 0.1624, y: 0.068, z: -0.2236}
+  m_LocalRotation: {x: 0.51683336, y: -0.7020713, z: -0.48983938, w: 0.0060424195}
+  m_LocalPosition: {x: 0.1677, y: 0.0546, z: -0.2327}
   m_LocalScale: {x: 0.001407718, y: 0.000594891, z: 0.0015981318}
   m_Children: []
   m_Father: {fileID: 4228035045517920529}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -18.33, y: -135.4, z: -90}
+  m_LocalEulerAnglesHint: {x: -42.966, y: -135.289, z: -91.106}
 --- !u!54 &4228035047333497260
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18260,6 +18324,8 @@ GameObject:
   - component: {fileID: 4228035047448390992}
   - component: {fileID: 4228035047448390994}
   - component: {fileID: 4228035047448390995}
+  - component: {fileID: 2245227758708769207}
+  - component: {fileID: 6968953423870802639}
   m_Layer: 0
   m_Name: kalin_cember
   m_TagString: Untagged
@@ -18330,6 +18396,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &2245227758708769207
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228035047448390993}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!64 &6968953423870802639
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228035047448390993}
+  m_Material: {fileID: 13400000, guid: 94e94248738ff4142891924351599e54, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6220623956004709180, guid: 8ecaee9f463b67c4ba157cf3da7fdbfa, type: 3}
 --- !u!1 &4228035047468888554
 GameObject:
   m_ObjectHideFlags: 0

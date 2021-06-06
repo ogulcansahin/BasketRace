@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    private int ballCount = 5;
+    private int ballCount = 3;
     public int score = 0;
 
     public Image playerIndicator;
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     private bool isFinishEffectStarted = false;
     int numberOfCoin = 0;
 
+    private AudioSource [] sounds;
     // Start is called before the first frame update
     private void Start()
     {
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
         multipliers = GameObject.FindWithTag("Multiplier");
         multipliers.SetActive(false);
         finishEffects = playerFinish.GetComponentsInChildren<ParticleSystem>();
+        sounds = gameObject.GetComponents<AudioSource>();
 
         TapToPlayCanvas = GameObject.FindWithTag("TapToPlayCanvas").GetComponent<Canvas>();
         LevelCompletedCanvas = GameObject.FindWithTag("LevelCompletedCanvas").GetComponent<Canvas>();
@@ -161,23 +163,29 @@ public class GameManager : MonoBehaviour
     public void SetisGameStarted(bool gameStarted)
     {
         isGameStarted = gameStarted;
-        if(isGameStarted == true)
+        if (isGameStarted == true)
         {
             DisableTapToPlay();
+            
             MainPlayerAnimator[0].SetTrigger("RunCondition");
             MainPlayerAnimator[1].SetTrigger("StartDripling");
             enemyPlayerAnimator[0].SetTrigger("RunCondition");
             enemyPlayerAnimator[1].SetTrigger("StartDripling");
+            
         }
     }
 
     public void DisableTapToPlay()
     {
         TapToPlayCanvas.enabled = false;
+        if(mainPlayerScript.GetIsRunning())
+            sounds[0].Play();
     }
 
     public void GameOver()
     {
+        sounds[2].Play();
+        sounds[0].Stop();
         Time.timeScale = 0;
         GameOverCanvas.enabled = true;
         isGameStarted = false;
@@ -187,6 +195,8 @@ public class GameManager : MonoBehaviour
     {
         if(isFinishEffectStarted == false)
         {
+            sounds[1].Play();
+            sounds[0].Stop();
             finishEffects[0].Play();
             finishEffects[1].Play();
             isFinishEffectStarted = true;

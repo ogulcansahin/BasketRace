@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7871181258069894533}
   - component: {fileID: 7871181258069894586}
-  - component: {fileID: 7871181258069894532}
   m_Layer: 0
   m_Name: ShootingDistance
   m_TagString: Stop
@@ -45,15 +44,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3189206, y: 0.072420955, z: 0.64395523}
   m_Center: {x: -0.046004057, y: -0.073382445, z: -0.4511547}
---- !u!114 &7871181258069894532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7871181258069894587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4abbd3ebeb7cf64a820d2423037324a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 451094}
   - component: {fileID: 3351094}
   - component: {fileID: 2351094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Barrier02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 451096}
   - component: {fileID: 2874110137717266943}
   - component: {fileID: -9123508053734265472}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacle1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

@@ -31,6 +31,8 @@ TagManager:
   - Multiplier_2
   - Multiplier_5
   - Multiplier
+  - BasketballOfEnemyPlayer
+  - HoopSquare
   layers:
   - Default
   - TransparentFX
@@ -40,12 +42,12 @@ TagManager:
   - UI
   - Player1
   - Door
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Obstacles
+  - Boxes
+  - EnemyStage
+  - EnemyWalkingway
+  - MainPlayerDoor
+  - MainPlayerMovingWay
   - 
   - 
   - 

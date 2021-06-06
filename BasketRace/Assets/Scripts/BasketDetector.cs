@@ -7,16 +7,23 @@ public class BasketDetector : MonoBehaviour
 
     private ParticleSystem basketEffect;
     startdooranim TheScript;
+    private AudioSource sound;
     
     private void Start()
     {
         
+        sound = gameObject.GetComponent<AudioSource>();
         TheScript = GetComponentInChildren<startdooranim>();
         basketEffect = gameObject.GetComponentInChildren<ParticleSystem>();
         
     }
     private void OnTriggerEnter(Collider other)
     {
+        if(sound != null && !other.CompareTag("BasketballOfEnemyPlayer"))
+        {
+            sound.Play();
+        }
+        
         basketEffect.Play();        
         if (TheScript.actualDoorStatus == false)    //Baþlangýçta kapý kapalýysa ve OnTriggerdan dolayý basket olduðunu anlýyor, basket olduysa giriyor.
         {
