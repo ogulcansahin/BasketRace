@@ -166,7 +166,6 @@ public class GameManager : MonoBehaviour
         if (isGameStarted == true)
         {
             DisableTapToPlay();
-            
             MainPlayerAnimator[0].SetTrigger("RunCondition");
             MainPlayerAnimator[1].SetTrigger("StartDripling");
             enemyPlayerAnimator[0].SetTrigger("RunCondition");
@@ -203,6 +202,7 @@ public class GameManager : MonoBehaviour
         }
 
         multipliers.SetActive(true);
+        MainPlayerAnimator[1].ResetTrigger("StartDripling");
         enemyPlayerAnimator[0].SetTrigger("StopTrigger");
         enemyPlayerAnimator[1].SetTrigger("StopDripling");
         MainPlayerAnimator[1].SetTrigger("StopDripling");

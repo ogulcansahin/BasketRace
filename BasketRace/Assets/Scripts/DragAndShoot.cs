@@ -51,7 +51,7 @@ public class DragAndShoot : MonoBehaviour
             }
 
             passingTime = Time.time - startTime;
-            if (t.phase == TouchPhase.Moved && passingTime > 0.35f)
+            if (t.phase == TouchPhase.Moved && passingTime > 0.25f)
             {
 
                 Vector3 curPosition = t.position;
@@ -83,14 +83,14 @@ public class DragAndShoot : MonoBehaviour
                 if (!isShoot)
                     DrawTrajectory.Instance.UpdateTrajectory(forceInit, rb, transform.position);
             }
-            if (t.phase == TouchPhase.Stationary && passingTime > 0.35f)
+            if (t.phase == TouchPhase.Stationary && passingTime > 0.25f)
             {
                 forceInit = (new Vector3(forceInit.x, forceInit.y, forceInit.y));
 
                 if (!isShoot)
                     DrawTrajectory.Instance.UpdateTrajectory(forceInit, rb, transform.position);
             }
-            if (t.phase == TouchPhase.Ended && passingTime > 0.35f)
+            if (t.phase == TouchPhase.Ended && passingTime > 0.25f)
             {
                 DrawTrajectory.Instance.HideLine();
                 touchReleasePos = t.position;
@@ -117,7 +117,7 @@ public class DragAndShoot : MonoBehaviour
                     atisegimi.x = (ScreenLimitationAsWorldSpace).x;
                 }
 
-                atisegimi = atisegimi / 3;
+                atisegimi = atisegimi / 2.7f;
 
                 if (atisegimi.y < 0)
                 {

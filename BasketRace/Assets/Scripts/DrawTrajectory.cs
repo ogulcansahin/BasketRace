@@ -20,7 +20,7 @@ public class DrawTrajectory : MonoBehaviour
     public void UpdateTrajectory (Vector3 forceVector, Rigidbody rigidBody, Vector3 startingPoint)
     {
         
-        forceVector = forceVector / 3;
+        forceVector = forceVector / 2.7f;
         if (forceVector.y < 0)
         {
             forceVector.x = forceVector.x * -1;

@@ -210,7 +210,7 @@ public class MainPlayerController : MonoBehaviour
                 firstPressPos = new Vector2(t.position.x, t.position.y);
             }
             passingTime = Time.time - startTime;
-            if (t.phase == TouchPhase.Ended && passingTime < 0.35f)
+            if (t.phase == TouchPhase.Ended && passingTime < 0.25f)
             {
                 //save ended touch 2d point
                 secondPressPos = new Vector2(t.position.x, t.position.y);
